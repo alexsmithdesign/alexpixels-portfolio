@@ -111,6 +111,47 @@ body::after {
   pointer-events: none;
 }
 
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Background Frame Overlay ===== */
+.bg-frame {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+
+  border-image: radial-gradient(circle at center,rgba(225, 16, 54, 0.01), rgba(225, 16, 54, 0.8)) 1;
+  border-width: 1px;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-frame-inner {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+
+  border-image: radial-gradient(circle at center,rgba(225, 16, 54, 0.01), rgba(225, 16, 54, 0.7)) 1;
+  border-width: 1px;
+  border-style: solid;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(225, 16, 54, 0) 0%,
+      rgba(225, 16, 54, 0) 35%,
+      rgba(225, 16, 54, 0.25) 100%
+    );
+}
+
 /* Header */
 header {
   position: fixed;
@@ -164,12 +205,12 @@ nav a:hover {
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-end;
+  justify-content: flex-end;
   position: relative;
   padding: 40px 80px 40px 80px;
   overflow: visible;
-  margin-bottom: 328px;
+  margin-bottom: 64px;
 }
 
 .hero-content {
@@ -177,6 +218,7 @@ nav a:hover {
   align-items: center;
   width: 100%;
   gap: 40px;
+  margin-bottom: 260px;
 }
 
 .hero-image {
@@ -292,10 +334,29 @@ nav a:hover {
   position: relative;
   padding: 0;
   overflow: hidden;
-  margin-bottom: 328px;
   background: transparent;
   background: linear-gradient(90deg,rgba(225, 16, 54, 0.25) 0%, rgba(225, 16, 54, 0) 33%, rgba(225, 16, 54, 0) 66%, rgba(225, 16, 54, 0.25) 100%);
+  box-shadow: 0px 0px 150px rgba(225, 16, 54, 0.4), 0px 0px 60px rgba(225, 16, 54, 0.2);
+}
 
+/* Outside warning stripes */
+.alert-section::before,
+.alert-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: url("/assets/redmovinglines.gif") repeat;
+  z-index: 11;
+}
+
+.alert-section::before {
+  top: 0;
+}
+
+.alert-section::after {
+  bottom: 0;
 }
 
 .alert-bg {
@@ -306,10 +367,6 @@ nav a:hover {
   bottom: 0;
   background: url("/assets/redmovinglines.gif") repeat;
   opacity: 0.2;
-}
-
-.alert-bg-2 {
-
 }
 
 .alert-content {
@@ -421,6 +478,7 @@ nav a:hover {
   position: relative;
   padding: 100px 100px;
   min-height: 100vh;
+  margin-top: 328px;
 }
 
 .gallery-title {
@@ -476,7 +534,7 @@ nav a:hover {
 .gallery-image {
   width: 100%;
   height: 300px;
-  object-fit: cover;
+  object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   border: 2px solid rgba(225, 16, 54, 0.3);
@@ -516,11 +574,11 @@ nav a:hover {
   position: absolute;
   z-index: 10;
   transition: transform 0.3s, opacity 0.3s;
-  opacity: 1;
+  opacity: 0.88;
 }
 
 .gallery-arrow:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .gallery-arrow-left {
@@ -530,11 +588,12 @@ nav a:hover {
 }
 
 .gallery-arrow-left.visible {
-  opacity: 1;
+  opacity: 0.88;
   pointer-events: auto;
 }
 
 .gallery-arrow-right {
+  opacity: 0.88;
   right: 0;
 }
 
@@ -699,67 +758,88 @@ nav a:hover {
   box-shadow: 0px 0px 10px rgba(225, 16, 54, 0.8);
 }
 
-/* Character section adjustments */
-.solar-characters {
+/* Solar Requiem Characters Layout */
+.solar-characters-container {
+  display: flex;
+  gap: 30px;
   margin-top: 80px;
-}
-
-.character-card {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
   align-items: flex-start;
-  margin-bottom: 50px;
 }
 
-.character-card-column {
+/* Column 1: Portraits */
+.character-portraits-column {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
-  alighn-items: flex-start;
-  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .character-portrait {
   width: 301px;
   height: 316px;
   object-fit: cover;
-  flex-shrink: 0;
 }
 
-.character-info {
+/* Column 2: Info Cards */
+.character-info-column {
   flex: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 70px;
+}
+
+/* Outer card with border and no fill */
+.character-card-outer {
+  padding: 1px;
+  background: transparent;
+  border-image: radial-gradient(circle at center,rgba(225, 16, 54, 0.01), rgba(225, 16, 54, 0.8)) 1;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* 8px gap */
+.character-card-inner {
+  margin: 8px;
+  padding: 40px;
+  background: radial-gradient(circle at center, 
+    rgba(225, 16, 54, 0) 0%, 
+    rgba(225, 16, 54, 0.2) 100%);
+  border-image: radial-gradient(circle at center,rgba(225, 16, 54, 0.01), rgba(225, 16, 54, 0.7)) 1;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Row 1: Name and Job Title */
+.character-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .character-name {
   font-family: 'Open Sans Condensed';
   font-size: 39px;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: 300;
   color: #fff;
-  text-shadow: 0px 0px 20px rgba(225, 16, 54, 0.6);
   letter-spacing: 10px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 .character-job {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 12px;
   font-family: 'Merquise';
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 10px;
   text-align: right;
+  margin: 0;
 }
 
-.red-glow {
-  color: #E11036;
-  text-shadow: 0px 0px 20px rgba(225, 16, 54, 1), 0px 0px 10px rgba(225, 16, 54, 0.8);
+.gold-glow {
+  color: #e19c10;
+  text-shadow: 0px 0px 20px rgb(225, 155, 16, 1), 0px 0px 10px rgba(225, 156, 16, 0.8);
 }
 
 .purple-glow {
@@ -772,82 +852,106 @@ nav a:hover {
   text-shadow: 0px 0px 20px rgba(13, 238, 88, 1), 0px 0px 10px rgba(13, 238, 88, 0.8);
 }
 
-.character-details {
-  display: flex;
-  flex-direction: row;
+/* Row 2: Stats Labels */
+.character-stats-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-  margin-bottom: 12px;
   font-family: 'Merquise';
-  font-size: 11px;
+  font-size: 13px;
   color: #E11036;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 4px;
+  text-shadow: 0px 0px 20px rgba(225, 16, 54, 1), 0px 0px 10px rgba(225, 16, 54, 0.8);
+  margin-bottom: 8px;
 }
 
-.character-details span {
-  white-space: nowrap;
+.character-stats-labels span:nth-child(1) {
+  text-align: left;
 }
 
+.character-stats-labels span:nth-child(2) {
+  text-align: center;
+}
+
+.character-stats-labels span:nth-child(3) {
+  text-align: right;
+}
+
+/* Row 3: Stats Values */
+.character-stats-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  font-family: 'Merquise';
+  font-size: 28px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.character-stats-values span:nth-child(1) {
+  text-align: left;
+}
+
+.character-stats-values span:nth-child(2) {
+  text-align: center;
+}
+
+.character-stats-values span:nth-child(3) {
+  text-align: right;
+}
+
+/* Row 4: Description */
 .character-description {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 100;
   font-size: 17px;
-  font-weight: lighter;
+  font-weight: 300;
   color: #fff;
   line-height: 1.7;
-  max-width: 600px;
+  margin: 0;
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 1200px) {
-  #solar-requiem .section-title {
-    font-size: 120px;
+  .solar-characters-container {
+    flex-direction: column;
   }
   
-  .solar-main-image-container {
+  .character-portraits-column {
+    flex-direction: row;
     width: 100%;
+    justify-content: space-between;
   }
   
-  .solar-main-image {
-    width: 100%;
-  }
-  
-  .solar-thumbnails {
-    width: 100%;
-  }
-  
-  .solar-game-description {
-    max-width: 100%;
+  .character-portrait {
+    width: 30%;
+    height: auto;
   }
 }
 
 @media (max-width: 768px) {
-  #solar-requiem .section-title {
-    font-size: 60px;
-  }
-  
-  .character-card {
+  .character-portraits-column {
     flex-direction: column;
-    gap: 20px;
   }
   
   .character-portrait {
-    width: 120px;
-    height: 120px;
+    width: 100%;
   }
   
   .character-name {
+    font-size: 24px;
+    letter-spacing: 5px;
+  }
+  
+  .character-job {
     font-size: 16px;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
   }
   
-  .character-details {
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .character-description {
-    font-size: 12px;
+  .character-stats-values {
+    font-size: 20px;
   }
 }
 

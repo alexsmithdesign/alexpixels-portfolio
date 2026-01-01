@@ -71,7 +71,7 @@ function initGallery() {
         rightArrow.style.opacity = '0.5';
         rightArrow.style.pointerEvents = 'none';
       } else {
-        rightArrow.style.opacity = '1';
+        rightArrow.style.opacity = '0.88';
         rightArrow.style.pointerEvents = 'auto';
       }
       
