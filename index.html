@@ -1,377 +1,330 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="/src/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alex Pixels - Portfolio</title>
-  </head>
-  <body>
-    <div class="bg-frame">
-      <div class="bg-frame-inner"></div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-alexpixels.svg" />
+  <link rel="stylesheet" href="/src/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Pixels - Portfolio</title>
+</head>
+<body>
+  <!-- HUD Corner Overlays -->
+  <div class="hud-overlay hud-top-left"></div>
+  <div class="hud-overlay hud-top-right"></div>
+  <div class="hud-overlay hud-bottom-left"></div>
+  <div class="hud-overlay hud-bottom-right"></div>
+
+  <div class="bg-frame">
+    <div class="bg-frame-inner"></div>
+  </div>
+
+  <!-- Fixed Header -->
+  <header>
+    <div class="logo">
+      <img src="/assets/logo-alexpixels.svg" alt="Alex Pixels">
     </div>
-    <header>
-      <div class="logo">ALEXPIXELS</div>
-      <div class="nav-bg">
-        <nav>
-          <ul>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#solar-requiem">Solar Requiem</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="#patreon">Patreon</a></li>
-          </ul>
-        </nav>
+    
+    <nav>
+      <div class="nav-item">
+        <a href="#gallery">GALLERY</a>
+        <div class="nav-rect"></div>
       </div>
-    </header>
-  
-    <main class="hero">
-      <div class="hero-content">
-        <img src="/assets/SR-BattleMock.gif" alt="Hero" class="hero-image">
-        
-        <div class="hero-text-container">
-          <div class="hero-subtitle">THE DESIGN STUDIO OF ALEXANDER SMITH</div>
-          <div class="hero-title">PIXEL ART<br>& DESIGN</div>
-        </div>
+      <div class="nav-item">
+        <a href="#solar-requiem">GAME</a>
+        <div class="nav-rect"></div>
       </div>
-      
-      <div class="social-icons">
-        <!-- Twitter/X Icon -->
-        <div class="social-icon">
-          <div class="twitter-image"></div>
-        </div>
-        
-        <!-- Instagram Icon -->
-        <div class="social-icon">
-          <div class="insta-image"></div>
-        </div>
-        
-        <!-- Itch.io Icon -->
-        <div class="social-icon">
-          <div class="itch-image"></div>
-        </div>
+      <div class="nav-item">
+        <a href="#shop">SHOP</a>
+        <div class="nav-rect"></div>
+      </div>
+      <div class="nav-item">
+        <a href="#patreon">PATREON</a>
+        <div class="nav-rect"></div>
+      </div>
+    </nav>
+  </header>
 
-        <!-- LinkedIn Icon -->
-        <div class="social-icon">
-          <div class="linkedin-image"></div>
-        </div>
-      </div>
-      
-    </main>
-  
-    <!-- Alert Section -->
-    <section class="alert-section">
-      <div class="alert-bg"></div>
-      
-      <div class="warning-band top">
-        <div class="warning-stripe"></div>
-        <div class="warning-scroll">
-          <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
-          <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
-        </div>
-      </div>
-
-      <div class="alert-content">
-        <h2 class="alert-title">ALERT!</h2>
-            
-            <div class="alert-numbers">
-              <span>4768</span>
-              <span>8967248</span>
-              <span>6</span>
-              <span>0982</span>
-            </div>
-            <img src="/assets/Bar-Code.svg">
-            <p class="alert-text">
-              HUMAN, QUEER, & DIVERSE ART AHEAD
-            </p>
-            
-            <p class="alert-disclaimer">
-              *NO AI ART USED. ALL VISUAL ART CREATED BY ALEXANDER BY HAND. AI CODING ONLY.
-            </p>
-      </div>
-
-      <div class="warning-band bottom">
-        <div class="warning-stripe"></div>
-        <div class="warning-scroll">
-          <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
-          <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
-      <h2 class="gallery-title">GALLERY</h2>
-      
-      <!-- Pixel Art Section -->
-      <div class="gallery-category">
-        <h3 class="category-title">PIXEL ART</h3>
-        <div class="gallery-container">
-          <button class="gallery-arrow gallery-arrow-left" aria-label="Scroll left">
-            <img src="/assets/Left-Button.svg">
-          </button>
-          <div class="gallery-scroll">
-            <div class="gallery-items">
-              <div class="gallery-item">
-                <img src="/assets/spaceship1.png" alt="Space Ship" class="gallery-image">
-                <h4 class="gallery-item-title">SPACE SHIP</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/bof12.png" alt="Breath of Fire Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">BREATH OF FIRE REDRAW</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/event-horizon.png" alt="Void Demon" class="gallery-image">
-                <h4 class="gallery-item-title">VOID DEMON</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/Lufia2-HD2D2.png" alt="Lufia 2 Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">LUFIA 2 REDRAW</h4>
-                <p class="gallery-item-description">At vero eos et accusamus dignissimos ducimus qui b voluptatum deleniti atque et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/spaceship1.png" alt="Space Ship" class="gallery-image">
-                <h4 class="gallery-item-title">SPACE SHIP</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/bof12.png" alt="Breath of Fire Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">BREATH OF FIRE REDRAW</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/event-horizon.png" alt="Void Demon" class="gallery-image">
-                <h4 class="gallery-item-title">VOID DEMON</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/Lufia2-HD2D2.png" alt="Lufia 2 Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">LUFIA 2 REDRAW</h4>
-                <p class="gallery-item-description">At vero eos et accusamus dignissimos ducimus qui b voluptatum deleniti atque et quas.</p>
+  <!-- Hero Section with Subtitle (scrolls) -->
+  <main>
+    <div class="hero-subtitle">CONTEMPORARY DESIGN</br>& DEVELOPMENT</div>
+    
+        <!-- New Hero Gallery -->
+        <section id="gallery" class="hero-gallery-section">
+          <div class="gallery-container-wrapper">
+            <div class="gallery-scroll-container">
+              <div class="gallery-images">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/spaceship1.png" alt="Space Ship">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">SPACE SHIP</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/bof12.png" alt="Breath of Fire">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">BREATH OF FIRE</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/event-horizon.png" alt="Void Demon">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">VOID DEMON</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/Lufia2-HD2D2.png" alt="Lufia 2 Redraw">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">LUFIA 2 REDRAW</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/spaceship1.png" alt="Space Ship">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">Lorem Ipsum</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/bof12.png" alt="Breath of Fire">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">Dolor Sit</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/bof12.png" alt="Breath of Fire">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">Seven</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="gallery-image-wrapper">
+                  <img src="/assets/bof12.png" alt="Breath of Fire">
+                  <div class="gallery-image-title">
+                    <span class="gallery-title-text">Eight</span>
+                    <div class="gallery-title-rect"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <button class="gallery-arrow gallery-arrow-right" aria-label="Scroll right">
-            <img src="/assets/Right-Button.svg">
-          </button>
-        </div>
-      </div>
-
-      <!-- Physical Art Section -->
-      <div class="gallery-category">
-        <h3 class="category-title">PHYSICAL ART</h3>
-        <div class="gallery-container">
-          <button class="gallery-arrow gallery-arrow-left" aria-label="Scroll left">
-            <svg width="44" height="44" viewBox="0 0 44 44">
-              <rect width="44" height="44" fill="#1a1a1a" rx="4"/>
-              <path d="M24 14 L14 24 L24 34" stroke="#ff0040" stroke-width="2" fill="none"/>
-            </svg>
-          </button>
-          <div class="gallery-scroll">
-            <div class="gallery-items">
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Space Ship" class="gallery-image">
-                <h4 class="gallery-item-title">ONE</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Breath of Fire Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">TWO</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Void Demon" class="gallery-image">
-                <h4 class="gallery-item-title">THREE</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Lufia 2 Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">FOUR</h4>
-                <p class="gallery-item-description">At vero eos et accusamus dignissimos ducimus qui b voluptatum deleniti atque et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Space Ship" class="gallery-image">
-                <h4 class="gallery-item-title">FIVE</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Breath of Fire Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">SIX</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/*.png" alt="Void Demon" class="gallery-image">
-                <h4 class="gallery-item-title">SEVEN</h4>
-                <p class="gallery-item-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</p>
-              </div>
-              <div class="gallery-item">
-                <img src="/assets/Lufia2-HD2D2.png" alt="Lufia 2 Redraw" class="gallery-image">
-                <h4 class="gallery-item-title">EIGHT</h4>
-                <p class="gallery-item-description">At vero eos et accusamus dignissimos ducimus qui b voluptatum deleniti atque et quas.</p>
-              </div>
-            </div>
+          
+          <!-- Gallery Navigation Arrows -->
+          <div class="gallery-nav">
+            <button class="gallery-arrow gallery-arrow-left" aria-label="Scroll left">
+              <img src="/assets/Left-Button.svg" alt="Left">
+            </button>
+            <button class="gallery-arrow gallery-arrow-right" aria-label="Scroll right">
+              <img src="/assets/Right-Button.svg" alt="Right">
+            </button>
           </div>
-          <button class="gallery-arrow gallery-arrow-right" aria-label="Scroll right">
-            <svg width="44" height="44" viewBox="0 0 44 44">
-              <rect width="44" height="44" fill="#1a1a1a" rx="4"/>
-              <path d="M20 14 L30 24 L20 34" stroke="#ff0040" stroke-width="2" fill="none"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Solar Requiem Section -->
-    <section id="solar-requiem" class="solar-requiem-section">
-      <h2 class="section-title">SOLAR<br>REQUIEM</h2>
+    <h1 class="hero-title">ALEX PIXELS</h1>
+    
+    <!-- Social Icons (centered) -->
+    <div class="social-icons">
+      <div class="social-icon">
+        <div class="twitter-image"></div>
+      </div>
+      <div class="social-icon">
+        <div class="insta-image"></div>
+      </div>
+      <div class="social-icon">
+        <div class="itch-image"></div>
+      </div>
+      <div class="social-icon">
+        <div class="linkedin-image"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Alert Section -->
+  <section class="alert-section">
+    <div class="alert-bg"></div>
+    
+    <div class="warning-band top">
+      <div class="warning-stripe"></div>
+      <div class="warning-scroll">
+        <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
+        <span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span>
+      </div>
+    </div>
+
+    <div class="alert-content">
+      <h2 class="alert-title">ALERT!</h2>
+          
+      <div class="alert-numbers">
+        <span>4768</span>
+        <span>8967248</span>
+        <span>6</span>
+        <span>0982</span>
+      </div>
+      <img src="/assets/Bar-Code.svg" alt="Barcode">
+      <p class="alert-text">
+        HUMAN, QUEER, & DIVERSE ART AHEAD
+      </p>
       
-      <div class="solar-requiem-content">
+      <p class="alert-disclaimer">
+        *NO AI ART USED. ALL VISUAL ART CREATED BY ALEXANDER BY HAND. AI CODING ONLY.
+      </p>
+    </div>
+
+    <div class="warning-band bottom">
+      <div class="warning-stripe"></div>
+      <div class="warning-scroll">
+        <span>CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY</span>
+        <span>CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY CAST IN THE LIGHT OF THE GODDESS YE NOT GUILTY</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solar Requiem Section -->
+  <section id="solar-requiem" class="solar-requiem-section">
+    <h2 class="section-title">SOLAR<br>REQUIEM</h2>
+    
+    <div class="solar-requiem-content">
+      <div class="solar-intro-container">
+        <div class="solar-intro-text">
+          <h3 class="solar-intro-headline">A PIXEL ART JRPG ABOUT 3 HEROES MAKING A FINAL STAND AGAINST AN ENCROACHING VOID</h3>
+          <p class="solar-intro-body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
+          <a href="#" class="solar-intro-button">
+            <img src="/assets/glowy-button.svg" alt="Learn More">
+          </a>
+        </div>
+        
         <div class="solar-main-image-container">
           <img id="solarMainImage" src="/assets/SR-Airship.png" alt="Solar Requiem Game" class="solar-main-image">
         </div>
-        <div class="solar-thumbnails">
-          <img src="/assets/SR-Airship.png" alt="Game Screenshot 1" class="solar-thumbnail active" data-main="/assets/SR-Airship.png">
-          <img src="/assets/SR-SunInterior.png" alt="Game Screenshot 2" class="solar-thumbnail" data-main="/assets/SR-SunInterior.png">
-          <img src="/assets/SR-DomeHome2.png" alt="Game Screenshot 3" class="solar-thumbnail" data-main="/assets/SR-DomeHome2.png">
-          <img src="/assets/SR-overworld2.png" alt="Game Screenshot 4" class="solar-thumbnail" data-main="/assets/SR-overworld2.png">
-          <img src="/assets/SR-Palace.png" alt="Game Screenshot 5" class="solar-thumbnail" data-main="/assets/SR-Palace.png">
-          <img src="/assets/SR-Palace2.png" alt="Game Screenshot 6" class="solar-thumbnail" data-main="/assets/SR-Palace2.png">
+      </div>
+      
+      <div class="solar-thumbnails">
+        <img src="/assets/SR-Airship.png" alt="Game Screenshot 1" class="solar-thumbnail active" data-main="/assets/SR-Airship.png">
+        <img src="/assets/SR-SunInterior.png" alt="Game Screenshot 2" class="solar-thumbnail" data-main="/assets/SR-SunInterior.png">
+        <img src="/assets/SR-DomeHome2.png" alt="Game Screenshot 3" class="solar-thumbnail" data-main="/assets/SR-DomeHome2.png">
+        <img src="/assets/SR-overworld2.png" alt="Game Screenshot 4" class="solar-thumbnail" data-main="/assets/SR-overworld2.png">
+        <img src="/assets/SR-Palace.png" alt="Game Screenshot 5" class="solar-thumbnail" data-main="/assets/SR-Palace.png">
+        <img src="/assets/SR-Palace2.png" alt="Game Screenshot 6" class="solar-thumbnail" data-main="/assets/SR-Palace2.png">
+      </div>
+      
+      <div class="solar-characters-container">
+        <div class="character-portraits-column">
+          <img src="/assets/Eriu.png" alt="ERIU" class="character-portrait">
+          <img src="/assets/Atum.png" alt="ATUM" class="character-portrait">
+          <img src="/assets/Saruna.png" alt="SARUNA" class="character-portrait">
         </div>
         
-        <div class="solar-characters-container">
-          <!-- Column 1: Character Portraits -->
-          <div class="character-portraits-column">
-            <img src="/assets/Eriu.png" alt="ERIU" class="character-portrait">
-            <img src="/assets/Atum.png" alt="ATUM" class="character-portrait">
-            <img src="/assets/Saruna.png" alt="SARUNA" class="character-portrait">
+        <div class="character-info-column">
+          <div class="character-card-outer">
+            <div class="character-card-inner">
+              <div class="character-header">
+                <h3 class="character-name">ERIU</h3>
+                <p class="character-job gold-glow">SUN PRINCESS</p>
+              </div>
+              <div class="character-stats-labels">
+                <span>AGE</span>
+                <span>HEIGHT</span>
+                <span>WEAPON</span>
+              </div>
+              <div class="character-stats-values">
+                <span>23</span>
+                <span>6'1"</span>
+                <span>SWORD</span>
+              </div>
+              <p class="character-description">Orphaned as a child, Eriu was raised in the Temple of Light by the Light Priestess. She has trained in the arts of Neutral Energy, while aiding the Temple in it's research efforts.</p>
+            </div>
           </div>
           
-          <!-- Column 2: Character Info Cards -->
-          <div class="character-info-column">
-            
-            <!-- Eriu Card -->
-            <div class="character-card-outer">
-              <div class="character-card-inner">
-                <!-- Row 1: Name and Job Title -->
-                <div class="character-header">
-                  <h3 class="character-name">ERIU</h3>
-                  <p class="character-job gold-glow">SUN PRINCESS</p>
-                </div>
-                
-                <!-- Row 2: Labels -->
-                <div class="character-stats-labels">
-                  <span>AGE</span>
-                  <span>HEIGHT</span>
-                  <span>WEAPON</span>
-                </div>
-                
-                <!-- Row 3: Values -->
-                <div class="character-stats-values">
-                  <span>23</span>
-                  <span>6'1"</span>
-                  <span>SWORD</span>
-                </div>
-                
-                <!-- Row 4: Description -->
-                <p class="character-description">Orphaned as a child, Eriu was raised in the Temple of Light by the Light Priestess. She has trained in the arts of Neutral Energy, while aiding the Temple in it's research efforts.</p>
+          <div class="character-card-outer">
+            <div class="character-card-inner">
+              <div class="character-header">
+                <h3 class="character-name">ATUM</h3>
+                <p class="character-job purple-glow">DARK THEORIST</p>
               </div>
-            </div>
-            
-            <!-- Atum Card -->
-            <div class="character-card-outer">
-              <div class="character-card-inner">
-                <div class="character-header">
-                  <h3 class="character-name">ATUM</h3>
-                  <p class="character-job purple-glow">DARK THEORIST</p>
-                </div>
-                
-                <div class="character-stats-labels">
-                  <span>AGE</span>
-                  <span>HEIGHT</span>
-                  <span>WEAPON</span>
-                </div>
-                
-                <div class="character-stats-values">
-                  <span>56</span>
-                  <span>7'2"</span>
-                  <span>SCYTHE</span>
-                </div>
-                
-                <p class="character-description">Atum and the Light Priestess work together to study Dark Energy and to better understand the realm which rejects the Dark. He tends to be reserved and intimidating, but cares deeply about his work and other people.</p>
+              <div class="character-stats-labels">
+                <span>AGE</span>
+                <span>HEIGHT</span>
+                <span>WEAPON</span>
               </div>
-            </div>
-            
-            <!-- Saruna Card -->
-            <div class="character-card-outer">
-              <div class="character-card-inner">
-                <div class="character-header">
-                  <h3 class="character-name">SARUNA</h3>
-                  <p class="character-job green-glow">LIGHT PRIESTESS</p>
-                </div>
-                
-                <div class="character-stats-labels">
-                  <span>AGE</span>
-                  <span>HEIGHT</span>
-                  <span>WEAPON</span>
-                </div>
-                
-                <div class="character-stats-values">
-                  <span>48</span>
-                  <span>4'9"</span>
-                  <span>STAFF</span>
-                </div>
-                
-                <p class="character-description">Known for her benevolence, and big personality, Saruna controls one of the Largest Light Temples in the realm which houses orphans, and conducts research. She often clashes with other followers of the Light who she deems "fakes."</p>
+              <div class="character-stats-values">
+                <span>56</span>
+                <span>7'2"</span>
+                <span>SCYTHE</span>
               </div>
+              <p class="character-description">Atum and the Light Priestess work together to study Dark Energy and to better understand the realm which rejects the Dark. He tends to be reserved and intimidating, but cares deeply about his work and other people.</p>
             </div>
-            
+          </div>
+          
+          <div class="character-card-outer">
+            <div class="character-card-inner">
+              <div class="character-header">
+                <h3 class="character-name">SARUNA</h3>
+                <p class="character-job green-glow">LIGHT PRIESTESS</p>
+              </div>
+              <div class="character-stats-labels">
+                <span>AGE</span>
+                <span>HEIGHT</span>
+                <span>WEAPON</span>
+              </div>
+              <div class="character-stats-values">
+                <span>48</span>
+                <span>4'9"</span>
+                <span>STAFF</span>
+              </div>
+              <p class="character-description">Known for her benevolence, and big personality, Saruna controls one of the Largest Light Temples in the realm which houses orphans, and conducts research. She often clashes with other followers of the Light who she deems "fakes."</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Shop Section -->
-    <section id="shop" class="shop-section">
-      <h2 class="section-title">SHOP</h2>
-      
-      <div class="shop-content">
-        <div class="shop-category">
-          <h3 class="shop-category-title">SHOP MERCH</h3>
-          <div class="shop-item">
-            <img src="https://picsum.photos/400/500?random=40" alt="Merch Item" class="shop-image">
-          </div>
-        </div>
-        
-        <div class="shop-category">
-          <h3 class="shop-category-title">SHOP ASSETS</h3>
-          <div class="shop-item">
-            <img src="https://picsum.photos/400/500?random=41" alt="Asset Pack" class="shop-image">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Patreon Section -->
-    <section id="patreon" class="patreon-section">
-      <div class="patreon-content">
-        <p class="patreon-intro">PLEASE CONSIDER SUPPORTING ALEX PIXELS ON</p>
-        <h2 class="section-title">PATREON</h2>
-        <p class="patreon-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <a href="#" class="patreon-button">JOIN PATREON</a>
-      </div>
-    </section>
-
-    <!-- Fullscreen Image Modal -->
-    <div id="imageModal" class="image-modal">
-      <img id="modalImage" src="" alt="Fullscreen image" class="modal-image">
     </div>
+  </section>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <!-- Shop Section -->
+  <section id="shop" class="shop-section">
+    <h2 class="section-title">SHOP</h2>
+    
+    <div class="shop-content">
+      <div class="shop-category">
+        <h3 class="shop-category-title">SHOP MERCH</h3>
+        <div class="shop-item">
+          <img src="https://picsum.photos/400/500?random=40" alt="Merch Item" class="shop-image">
+        </div>
+      </div>
+      
+      <div class="shop-category">
+        <h3 class="shop-category-title">SHOP ASSETS</h3>
+        <div class="shop-item">
+          <img src="https://picsum.photos/400/500?random=41" alt="Asset Pack" class="shop-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patreon Section -->
+  <section id="patreon" class="patreon-section">
+    <div class="patreon-content">
+      <p class="patreon-intro">PLEASE CONSIDER SUPPORTING ALEX PIXELS ON</p>
+      <h2 class="section-title">PATREON</h2>
+      <p class="patreon-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <a href="#" class="patreon-button">JOIN PATREON</a>
+    </div>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
