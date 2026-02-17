@@ -1,115 +1,161 @@
-import './style.css'
+import './style.css';
 
-// Parallax effect for background
+/* ===============================
+   PARALLAX BACKGROUND
+================================ */
 let ticking = false;
 
 function updateParallax() {
   const scrolled = window.pageYOffset;
-  const parallaxSpeed = 0.5;
-  document.documentElement.style.setProperty('--parallax-y', `${scrolled * parallaxSpeed}px`);
+  document.documentElement.style.setProperty(
+    '--parallax-y',
+    `${scrolled * 0.4}px`
+  );
   ticking = false;
 }
 
-function requestParallaxUpdate() {
+window.addEventListener('scroll', () => {
   if (!ticking) {
-    window.requestAnimationFrame(updateParallax);
+    requestAnimationFrame(updateParallax);
     ticking = true;
   }
+});
+
+/* ===============================
+   HERO GALLERY + DOTS (SINGLE SYSTEM)
+================================ */
+const gallery = document.querySelector('.gallery-images');
+const items = Array.from(document.querySelectorAll('.gallery-image-wrapper'));
+const dotsContainer = document.querySelector('.gallery-dots');
+const btnLeft = document.querySelector('.gallery-arrow-left');
+const btnRight = document.querySelector('.gallery-arrow-right');
+
+let currentIndex = 0;
+let visibleCount = window.innerWidth <= 768 ? 1 : 5;
+
+// Build dots (ONE per image)
+dotsContainer.innerHTML = '';
+items.forEach(() => {
+  const dot = document.createElement('div');
+  dot.className = 'gallery-dot';
+  dotsContainer.appendChild(dot);
+});
+
+const dots = Array.from(document.querySelectorAll('.gallery-dot'));
+
+function getMaxIndex() {
+  return Math.max(0, items.length - visibleCount);
 }
 
-window.addEventListener('scroll', requestParallaxUpdate);
+function updateGallery() {
+  const itemWidth = items[0].offsetWidth;
+  gallery.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
 
-// Hero Gallery functionality
-const galleryImages = document.querySelector('.gallery-images');
-const galleryArrowLeft = document.querySelector('.gallery-arrow-left');
-const galleryArrowRight = document.querySelector('.gallery-arrow-right');
-const galleryItems = document.querySelectorAll('.gallery-image-wrapper');
+  // Update dots
+  dots.forEach((dot, i) => {
+    dot.classList.remove('active');
 
-let currentGalleryIndex = 0;
-const totalGalleryItems = galleryItems.length;
+    // MOBILE: only one active dot
+    if (visibleCount === 1) {
+      if (i === currentIndex) dot.classList.add('active');
+    }
+    // DESKTOP: active range = visible items
+    else {
+      if (i >= currentIndex && i < currentIndex + visibleCount) {
+        dot.classList.add('active');
+      }
+    }
+  });
 
-// Calculate how many items are visible at once
-function getVisibleItems() {
-  const containerWidth = document.querySelector('.gallery-scroll-container').offsetWidth;
-  const itemWidth = galleryItems[0].offsetWidth;
-  return Math.floor(containerWidth / itemWidth);
+  // Arrow states
+  btnLeft.classList.toggle('disabled', currentIndex === 0);
+  btnRight.classList.toggle('disabled', currentIndex === getMaxIndex());
 }
 
-function updateGalleryPosition() {
-  const itemWidth = galleryItems[0].offsetWidth;
-  const offset = -currentGalleryIndex * itemWidth;
-  galleryImages.style.transform = `translateX(${offset}px)`;
-  
-  // Update arrow states
-  const visibleItems = getVisibleItems();
-  const maxIndex = totalGalleryItems - visibleItems;
-  
-  if (currentGalleryIndex <= 0) {
-    galleryArrowLeft.classList.add('disabled');
-  } else {
-    galleryArrowLeft.classList.remove('disabled');
-  }
-  
-  if (currentGalleryIndex >= maxIndex) {
-    galleryArrowRight.classList.add('disabled');
-  } else {
-    galleryArrowRight.classList.remove('disabled');
-  }
-}
-
-galleryArrowLeft.addEventListener('click', () => {
-  if (currentGalleryIndex > 0) {
-    currentGalleryIndex--;
-    updateGalleryPosition();
+// Arrow controls
+btnLeft.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateGallery();
   }
 });
 
-galleryArrowRight.addEventListener('click', () => {
-  const visibleItems = getVisibleItems();
-  const maxIndex = totalGalleryItems - visibleItems;
-  
-  if (currentGalleryIndex < maxIndex) {
-    currentGalleryIndex++;
-    updateGalleryPosition();
+btnRight.addEventListener('click', () => {
+  if (currentIndex < getMaxIndex()) {
+    currentIndex++;
+    updateGallery();
   }
 });
 
-// Initialize gallery position
-updateGalleryPosition();
+// Dot click navigation
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    currentIndex = Math.min(i, getMaxIndex());
+    updateGallery();
+  });
+});
 
-// Update on window resize
+// Resize handling
 window.addEventListener('resize', () => {
-  updateGalleryPosition();
+  visibleCount = window.innerWidth <= 768 ? 1 : 5;
+  currentIndex = Math.min(currentIndex, getMaxIndex());
+  updateGallery();
 });
 
-// Solar Requiem thumbnail switching
+// Init
+updateGallery();
+
+/* ===============================
+   GALLERY LIGHTBOX
+================================ */
+const lightbox = document.getElementById('gallery-lightbox');
+const lightboxImg = document.getElementById('gallery-lightbox-img');
+
+items.forEach(wrapper => {
+  const img = wrapper.querySelector('img');
+  img.style.cursor = 'pointer';
+
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.remove('hidden');
+  });
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.add('hidden');
+  lightboxImg.src = '';
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.add('hidden');
+    lightboxImg.src = '';
+  }
+});
+
+/* ===============================
+   SOLAR REQUIEM THUMBNAILS
+================================ */
 const solarMainImage = document.getElementById('solarMainImage');
 const solarThumbnails = document.querySelectorAll('.solar-thumbnail');
 
 solarThumbnails.forEach(thumbnail => {
-  thumbnail.addEventListener('click', function() {
-    // Remove active class from all thumbnails
-    solarThumbnails.forEach(thumb => thumb.classList.remove('active'));
-    
-    // Add active class to clicked thumbnail
-    this.classList.add('active');
-    
-    // Update main image
-    const newImageSrc = this.getAttribute('data-main');
-    solarMainImage.src = newImageSrc;
+  thumbnail.addEventListener('click', () => {
+    solarThumbnails.forEach(t => t.classList.remove('active'));
+    thumbnail.classList.add('active');
+    solarMainImage.src = thumbnail.dataset.main;
   });
 });
 
-// Smooth scrolling for navigation links
+/* ===============================
+   SMOOTH SCROLL
+================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const target = document.querySelector(anchor.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
