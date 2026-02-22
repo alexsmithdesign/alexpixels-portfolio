@@ -232,7 +232,7 @@ header {
 }
 
 .logo img {
-  height: 114px;
+  height: 104px;
 }
 
 /* ===== Diagonal Nav ===== */
@@ -441,7 +441,7 @@ nav {
 }
 
 .gallery-title-text {
-  font-family: 'Merquise';
+  font-family: 'Rajdhani';
   font-size: 12px;
   font-weight: bold;
   color: #fff;
@@ -1138,8 +1138,7 @@ nav {
 
 .about-section {
   position: relative;
-  padding: 100px 80px;
-  margin-bottom: 128px;
+  padding: 100px 32px 32px 32px;
   max-width: 1740px;
   margin-left: auto;
   margin-right: auto;
@@ -1218,12 +1217,6 @@ nav {
 
 .about-skills-container {
   position: relative;
-}
-
-.skill-hex:hover {
-  background: rgba(14, 202, 202, 0.2);
-  border-color: #0ECACA;
-  box-shadow: 0px 0px 20px rgba(14, 202, 202, 0.6);
 }
 
 .about-connector {
@@ -1313,7 +1306,7 @@ nav {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
   .about-container {
     flex-direction: column;
     align-items: center;
@@ -1330,9 +1323,7 @@ nav {
   .about-right {
     max-width: 100%;
   }
-}
 
-@media (max-width: 1200px) {
   .solar-intro-container {
     flex-direction: column;
   }
@@ -1363,6 +1354,27 @@ nav {
   .character-portrait {
     width: 30%;
     height: auto;
+    margin: 0 auto;
+  }
+
+  .about-right {
+    align-items: center;
+  }
+
+  .about-bio {
+    max-width: 400px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 1400px) {
+  /* Shop: stack columns on mobile */
+  .shop-content {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-section {
+    padding: 100px 20px;
   }
 }
 
@@ -1371,18 +1383,54 @@ nav {
     padding: 15px 20px;
   }
 
+  .hud-top-left {
+    top: 48px;
+    width: 171px;
+    height: 96px;
+    background-image: url('/assets/hud-mobile-top-left.svg');
+  }
+
+  .hud-top-right {
+    top: 48px;
+    width: 171px;
+    height: 96px;
+    background-image: url('/assets/hud-mobile-top-right.svg');
+  }
+
+  .hud-bottom-left {
+    width: 149px;
+    height: 250px;
+    background-image: url('/assets/hud-mobile-bottom-left.svg');
+  }
+
+  .hud-bottom-right {
+    width: 149px;
+    height: 250px;
+    background-image: url('/assets/hud-mobile-bottom-right.svg');
+  }
+
+  .logo {
+    margin-top: 14px;
+  }
+
   .logo img {
-    height: 30px;
+    width:78px;
+    height:78px;
   }
 
   nav {
     gap: 10px;
+    margin-top: 16px;
+  }
+
+  .nav-item {
+    margin-right: 4px;
   }
 
   .nav-item:nth-child(2),
   .nav-item:nth-child(3),
   .nav-item:nth-child(4) {
-    margin-right: 0;
+    margin-right: 4px;
   }
 
   .nav-item a {
@@ -1395,8 +1443,8 @@ nav {
   }
 
   .hero-subtitle {
-    font-size: 14px;
-    padding: 120px 20px 40px 20px;
+    background-image: none;
+    margin: 120px 0 0 0;
   }
 
   .hero-title {
@@ -1405,12 +1453,7 @@ nav {
   }
 
   .social-icons {
-    gap: 15px;
-  }
-
-  .social-icon {
-    width: 60px;
-    height: 38px;
+    gap: 0;
   }
 
   .hero-gallery-section {
@@ -1429,12 +1472,48 @@ nav {
     font-size: 80px;
   }
 
+  .solar-requiem-section {
+    padding: 100px 32px;
+  }
+
   .character-portraits-column {
     flex-direction: column;
   }
   
   .character-portrait {
+    width: 70%;
+  }
+
+  /* Character info column: stack and center on mobile so it fits */
+  .character-info-column {
     width: 100%;
+    min-width: 0;
+  }
+
+  .content-card-outer {
+    max-width: 100%;
+  }
+
+  .content-card-inner {
+    padding: 40px 20px;
+  }
+
+  .character-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .character-name {
+    text-align: center;
+  }
+
+  .character-job {
+    text-align: center;
+  }
+
+  .character-stats-values {
+    font-size: 14px;
   }
   
   .about-diamond {
@@ -1449,5 +1528,4 @@ nav {
   .about-ornament {
     width: 60px;
   }
-
 }
