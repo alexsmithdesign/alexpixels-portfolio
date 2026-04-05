@@ -356,6 +356,11 @@ nav {
   background-repeat: no-repeat;
 }
 
+a.social-icon {
+  text-decoration: none;
+  color: inherit;
+}
+
 .social-icon:hover {
   transform: scale(1.2);
 }
