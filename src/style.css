@@ -302,7 +302,7 @@ nav {
   font-family: 'Merquise', sans-serif;
   font-size: 11px;
   line-height: 20px;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #0ECACA;
   text-shadow: 0px 0px 20px rgba(14, 202, 202, 1), 0px 0px 10px rgba(14, 202, 202, 0.8);
@@ -396,7 +396,7 @@ a.social-icon {
 /* ===== New Gallery Section (Hero Replacement) ===== */
 .hero-gallery-section {
   padding: 0;
-  margin: 0 0 40px 0;
+  margin: 40px 0 40px 0;
   flex-shrink: 0;
 }
 
@@ -546,8 +546,8 @@ a.social-icon {
   background: transparent;
   background: linear-gradient(90deg,rgba(225, 16, 54, 0.25) 0%, rgba(225, 16, 54, 0) 33%, rgba(225, 16, 54, 0) 66%, rgba(225, 16, 54, 0.25) 100%);
   box-shadow: 0px 0px 150px rgba(225, 16, 54, 0.4), 0px 0px 60px rgba(225, 16, 54, 0.2);
-  margin-top: 340px;
-  margin-bottom: 340px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .alert-section::before,
@@ -583,16 +583,16 @@ a.social-icon {
   position: relative;
   z-index: 10;
   text-align: center;
-  padding: 60px 40px;
+  padding: 30px 40px;
 }
 
 .alert-title {
   font-family: 'Grand Halo';
-  font-size: 100px;
+  font-size: 40px;
   font-weight: bold;
   color: #E11036;
   text-shadow: 0px 0px 120px rgba(225, 16, 54, 1), 0px 0px 30px rgba(225, 16, 54, 0.8);
-  letter-spacing: 8px;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 
@@ -609,12 +609,12 @@ a.social-icon {
 }
 
 .alert-text {
-  font-family: 'Merquise';
-  font-size: 18px;
+  font-family: 'Rajdhani';
+  font-size: 16px;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 8px;
-  line-height: 1.8;
+  letter-spacing: 3px;
+  line-height: 1.2;
   max-width: 1000px;
   margin: 20px auto 20px auto;
 }
@@ -691,7 +691,7 @@ a.social-icon {
   text-shadow: 0px 0px 150px rgba(225, 16, 54, 1), 0px 0px 60px rgba(225, 16, 54, 0.8);
   letter-spacing: 0;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   text-transform: uppercase;
 }
 
