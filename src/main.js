@@ -22,6 +22,22 @@ window.addEventListener('scroll', () => {
 });
 
 /* ===============================
+   SCROLL FADE-IN SECTIONS
+================================ */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in-section').forEach(el => {
+  fadeObserver.observe(el);
+});
+
+/* ===============================
    GALLERY INSTANCES (multi-row)
 ================================ */
 const galleryInstances = [];
@@ -196,7 +212,7 @@ function setSpriteFrame(col, row) {
 }
 
 const sectionConfig = [
-  { el: document.querySelector('.hero-collage'), id: 'hero', message: "Welcome to the Design Studio of Alex! Have a look around." },
+  { el: document.querySelector('.hero-collage'), id: 'hero', message: "Welcome! Have a look around." },
   { el: document.getElementById('gallery'), id: 'gallery', message: "Check out their work! Wow!" },
   { el: document.getElementById('solar-requiem'), id: 'solar-requiem', message: "Hey, look! I'm in this game! Looks fun, right?" },
   { el: document.getElementById('shop'), id: 'shop', message: "Ooh, the shop!" },
