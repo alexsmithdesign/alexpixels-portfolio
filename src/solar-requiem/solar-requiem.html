@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-alexpixels.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Requiem &mdash; Alex Pixels</title>
+</head>
+<body>
+<div class="sr-page-wrap">
+
+  <!-- NAV -->
+  <nav class="sr-nav">
+    <div class="sr-nav-inner">
+      <a href="#home" class="sr-nav-link active">HOME</a>
+      <a href="#gallery" class="sr-nav-link">GALLERY</a>
+      <a href="#characters" class="sr-nav-link">CHARACTERS</a>
+      <a href="#story-setting" class="sr-nav-link">STORY & SETTING</a>
+      <a href="#battle-system" class="sr-nav-link">BATTLE SYSTEM</a>
+      <a href="#join-waitlist" class="sr-nav-link">JOIN THE WAITLIST</a>
+    </div>
+    <button class="sr-nav-hamburger" id="sr-nav-hamburger" aria-label="Open menu">
+      <img src="/assets/solar-requiem/nav-mobile.svg" alt="">
+    </button>
+  </nav>
+  <div class="sr-mobile-overlay" id="sr-mobile-overlay"></div>
+  <div class="sr-mobile-menu" id="sr-mobile-menu">
+    <button class="sr-mobile-close" id="sr-mobile-close" aria-label="Close menu">
+      <img src="/assets/solar-requiem/close-button.svg" alt="Close">
+    </button>
+    <a href="#home" class="sr-mobile-link">HOME</a>
+    <a href="#gallery" class="sr-mobile-link">GALLERY</a>
+    <a href="#characters" class="sr-mobile-link">CHARACTERS</a>
+    <a href="#story-setting" class="sr-mobile-link">STORY & SETTING</a>
+    <a href="#battle-system" class="sr-mobile-link">BATTLE SYSTEM</a>
+    <a href="#join-waitlist" class="sr-mobile-link">JOIN THE WAITLIST</a>
+  </div>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="sr-section sr-hero">
+    <div class="sr-hero-row">
+      <div class="sr-hero-info">
+        <img src="/assets/solar-requiem/solar-requiem-logo.svg" alt="Solar Requiem" class="sr-hero-logo">
+        <div class="sr-hero-text-indent">
+          <h1 class="sr-hero-headline">A FANTASY GAME</h1>
+          <h3 class="sr-subsection-title">Inspired by the Golden Age of JRPGS</h3>
+          <ul class="sr-hero-bullets">
+            <li class="sr-hero-subtitle">Detailed Pixel Art</li>
+            <li class="sr-hero-subtitle">Turn Based Battles</li>
+            <li class="sr-hero-subtitle">Square Soft Aesthetic</li>
+            <li class="sr-hero-subtitle">And More!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sr-hero-right">
+        <div class="sr-hero-media">
+          <img src="/assets/solar-requiem/frame-corner.svg" class="sr-media-frame sr-media-frame-tl" alt="" aria-hidden="true">
+          <img src="/assets/solar-requiem/frame-corner.svg" class="sr-media-frame sr-media-frame-tr" alt="" aria-hidden="true">
+          <img src="/assets/solar-requiem/frame-corner.svg" class="sr-media-frame sr-media-frame-bl" alt="" aria-hidden="true">
+          <img src="/assets/solar-requiem/frame-corner.svg" class="sr-media-frame sr-media-frame-br" alt="" aria-hidden="true">
+          <div class="sr-media-player" id="sr-media-player">
+            <img src="/assets/SR-Palace2.png" alt="Solar Requiem Trailer" class="sr-media-poster" id="sr-media-poster">
+            <button class="sr-play-btn" id="sr-play-btn" aria-label="Play trailer">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="31" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.4)"/>
+                <polygon points="26,20 26,44 46,32" fill="white"/>
+              </svg>
+            </button>
+          </div>
+          <p class="sr-media-caption">WATCH THE TEASER</p>
+        </div>
+        <div class="sr-hero-cta">
+          <button class="sr-btn sr-btn-primary" id="sr-open-waitlist-modal"><span>JOIN THE WAITLIST</span></button>
+          <a href="https://www.patreon.com/c/alexpixels" target="_blank" rel="noopener noreferrer" class="sr-btn sr-btn-secondary"><span>SUPPORT THE CREATOR</span></a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="sr-section sr-gallery">
+    <h2 class="sr-section-title">GALLERY</h2>
+
+    <div class="sr-gallery-display">
+      <button class="sr-gallery-arrow sr-gallery-prev" aria-label="Previous image">
+        <img src="/assets/solar-requiem/arrow-lines.svg" alt="Previous" class="sr-arrow-flip">
+      </button>
+      <div class="sr-gallery-main">
+        <img id="sr-gallery-main-img" src="/assets/SR-Airship.png" alt="Gallery image">
+      </div>
+      <button class="sr-gallery-arrow sr-gallery-next" aria-label="Next image">
+        <img src="/assets/solar-requiem/arrow-lines.svg" alt="Next">
+      </button>
+    </div>
+
+    <div class="sr-gallery-mobile-controls">
+      <button class="sr-gallery-arrow sr-gallery-prev sr-mobile-arrow" aria-label="Previous image">
+        <img src="/assets/solar-requiem/arrow-lines.svg" alt="Previous" class="sr-arrow-flip">
+      </button>
+      <div class="sr-gallery-dots" id="sr-gallery-dots"></div>
+      <button class="sr-gallery-arrow sr-gallery-next sr-mobile-arrow" aria-label="Next image">
+        <img src="/assets/solar-requiem/arrow-lines.svg" alt="Next">
+      </button>
+    </div>
+
+    <div class="sr-gallery-thumbs">
+      <img src="/assets/SR-Airship.png" alt="Airship" class="sr-gallery-thumb active" data-category="environments">
+      <img src="/assets/SR-SunInterior.png" alt="Sun Interior" class="sr-gallery-thumb" data-category="environments">
+      <img src="/assets/SR-DomeHome2.png" alt="Dome Home" class="sr-gallery-thumb" data-category="environments">
+      <img src="/assets/SR-overworld2.png" alt="Overworld" class="sr-gallery-thumb" data-category="environments">
+      <img src="/assets/SR-Palace.png" alt="Palace" class="sr-gallery-thumb" data-category="environments">
+      <img src="/assets/SR-Palace2.png" alt="Palace 2" class="sr-gallery-thumb" data-category="environments">
+    </div>
+
+  </section>
+
+  <!-- CHARACTERS -->
+  <section id="characters" class="sr-section sr-characters">
+    <h2 class="sr-section-title">CHARACTERS</h2>
+    <h3 class="sr-subsection-title sr-text-center">Main Characters</h3>
+    <p class="sr-label">SELECT A CHARACTER</p>
+
+    <div class="sr-character-selector">
+      <button class="sr-char-select-btn active" data-character="wynter" aria-label="Select Wynter">
+        <div class="sr-char-thumb">
+          <img src="/assets/solar-requiem/wynter-thumbnail.png" alt="Wynter">
+        </div>
+        <span class="sr-char-select-name">Wynter</span>
+        <span class="sr-char-select-bar"></span>
+      </button>
+      <button class="sr-char-select-btn" data-character="saruna" aria-label="Select Saruna">
+        <div class="sr-char-thumb">
+          <img src="/assets/solar-requiem/saruna-thumbnail.png" alt="Saruna">
+        </div>
+        <span class="sr-char-select-name">Saruna</span>
+        <span class="sr-char-select-bar"></span>
+      </button>
+      <button class="sr-char-select-btn" data-character="atum" aria-label="Select Atum">
+        <div class="sr-char-thumb">
+          <img src="/assets/solar-requiem/atum-thumbnail.png" alt="Atum">
+        </div>
+        <span class="sr-char-select-name">Atum</span>
+        <span class="sr-char-select-bar"></span>
+      </button>
+    </div>
+
+    <div class="sr-character-detail-wrap">
+      <img src="/assets/solar-requiem/frame-side.svg" class="sr-detail-cap sr-detail-cap-left" alt="" aria-hidden="true">
+      <div class="sr-character-detail" id="sr-character-detail">
+        <div class="sr-char-detail-inner">
+        <div class="sr-char-detail-info">
+          <h4 class="sr-char-name" id="sr-char-name">WYNTER</h4>
+          <p class="sr-char-class" id="sr-char-class"><img src="/assets/solar-requiem/dark-light-orb.svg" alt="" class="sr-char-orb" id="sr-char-orb"> Liminal Knight</p>
+          <div class="sr-char-stats">
+            <div class="sr-stat">
+              <span class="sr-stat-label">AGE</span>
+              <span class="sr-stat-value" id="sr-char-age">23</span>
+            </div>
+            <div class="sr-stat">
+              <span class="sr-stat-label">WEAPON</span>
+              <span class="sr-stat-value" id="sr-char-weapon">Dual Sword</span>
+            </div>
+            <div class="sr-stat">
+              <span class="sr-stat-label">HOMETOWN</span>
+              <span class="sr-stat-value" id="sr-char-height">Ra - City of the Sun</span>
+            </div>
+          </div>
+        </div>
+        <div class="sr-char-detail-portrait" id="sr-detail-portrait-wrap">
+          <img src="/assets/solar-requiem/wynter-portrait.png" alt="Wynter">
+        </div>
+        </div>
+      </div>
+      <img src="/assets/solar-requiem/frame-side.svg" class="sr-detail-cap sr-detail-cap-right" alt="" aria-hidden="true">
+    </div>
+
+    <div class="sr-char-bio-wrap">
+      <p class="sr-char-bio" id="sr-char-bio">Born as princess of the Ra royal family, Wynter&rsquo;s parents were killed under mysterious circumstances when she was a child. A man known as the Count gained control over the empire, and forced a young Wynter to pray to the Solar Obelisk in order to increase its Light Energy output. This put a lot of strain on her and she begins to lose her Solar powers. She has gone rogue as an adult and actively opposes the Holy Ra Empire, and the abuse of Light Energy.</p>
+      <img src="/assets/solar-requiem/frame-wide.svg" alt="" class="sr-bio-divider" aria-hidden="true">
+    </div>
+
+    <h3 class="sr-subsection-title sr-text-center">Other Characters</h3>
+    <div class="sr-other-characters">
+      <div class="sr-other-char-card">
+        <img src="/assets/solar-requiem/horvek-sprite.png" alt="Count Horvek" class="sr-other-char-sprite">
+        <h5 class="sr-other-char-name">COUNT HORVEK</h5>
+        <p class="sr-other-char-role">TYRANT</p>
+        <p class="sr-other-char-desc">Genius scientist who broke the boundaries of Light Energy usage and created machines that were too powerful for their own good, but was banished to the Impasse. To get revenge he returned with an army of robots and monsters who he manipulated with his genius. He authoritatively rules over Ra now in place of an actual emperor. </p>
+      </div>
+      <div class="sr-other-char-card">
+        <img src="/assets/solar-requiem/nuon-sprite.png" alt="Nuon" class="sr-other-char-sprite">
+        <h5 class="sr-other-char-name">NUON</h5>
+        <p class="sr-other-char-role">PALADIN</p>
+        <p class="sr-other-char-desc">His true origins are unknown, but Nuon was able to gain the trust of Count Horvek, and serves as a tutor to young Wynter.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- STORY & SETTING -->
+  <section id="story-setting" class="sr-section sr-story">
+    <h2 class="sr-section-title">STORY &amp; SETTING</h2>
+
+    <div class="sr-story-row">
+      <div class="sr-story-text">
+        <p class="sr-subsection-title">Synopsis</p>
+        <h3 class="sr-story-headline">TAKE A STAND AGAINST THE LIGHT</h3>
+        <p class="sr-story-body">The people rejected Dark Energy as part of the natural order, but now Light runs amok. As the world faces it's final days, three heroes must deliver a message of hope to the future that may undo the destruction of the past.</p>
+      </div>
+    </div>
+    <img src="/assets/solar-requiem/sun.svg" alt="" class="sr-sun-decoration" aria-hidden="true">
+
+    <div class="sr-vocabulary">
+      <h3 class="sr-subsection-title">Vocabulary &amp; Important Terms</h3>
+      <div class="sr-terms-grid">
+        <div class="sr-term">
+          <dt class="sr-term-name">Dark &amp; Light Energy</dt>
+          <dd class="sr-term-def">The fundamental forces that make up the Universe, although, Dark Energy is heavily stigmatized.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Veyne</dt>
+          <dd class="sr-term-def">Goddess once believed to have created Planet Eris and Humans.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Eris</dt>
+          <dd class="sr-term-def">Earth-like planet orbiting the sun, Ra</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Veyne's Observatory</dt>
+          <dd class="sr-term-def">Ancient satellite that once served as a shrine. Accessing it is strictly forbidden by the Empire. It is considered the closest place one can get to the Sun safely.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Solar Obelisks</dt>
+          <dd class="sr-term-def">Mysterious machines responsible for channeling energy from the sun, and controlling Light Energy in the Solar System.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Duality Institute</dt>
+          <dd class="sr-term-def">Institution founded by Saruna to study and teach the science and magic of Light and Dark Energy.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Holy Conservatory</dt>
+          <dd class="sr-term-def">An old Imperial institution that strictly teaches Light Energy and condemns all forms of Dark Energy. </dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Ra</dt>
+          <dd class="sr-term-def">The name of the Sun, the Empire, and the City of Light.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">The Impasse</dt>
+          <dd class="sr-term-def">The barbarian lands far outside the control of the Empire. People normally do not return, except for the Count and his army.</dd>
+        </div>
+        <div class="sr-term">
+          <dt class="sr-term-name">Pearls</dt>
+          <dd class="sr-term-def">Crystallized fragments of pure energy. Pearls are both currency and power source in the world of Solar Requiem.</dd>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- BATTLE SYSTEM -->
+  <section id="battle-system" class="sr-section sr-battle">
+    <h2 class="sr-section-title">BATTLE SYSTEM</h2>
+    <h3 class="sr-subsection-title">&ldquo;Character Focus Time Battle&rdquo;</h3>
+    <p class="sr-battle-body">Inspired by Final Fantasy’s Active Time Battle. Specifically games like FF4, Lightning Returns FFXIII, and FF7 Remake.</p>
+    <p class="sr-battle-body">Alternate your focus between 3 playable characters. Strategize whose ATB to use and when.</p>
+    <p class="sr-battle-body">Each ability drains the ATB gauge partially.</p>
+    <p class="sr-battle-body">Attack in rapid succession to build chains and stagger enemies.</p>
+
+  </section>
+
+  <!-- ABOUT THE DESIGNER & DEVELOPER -->
+  <section class="sr-section sr-about">
+    <h2 class="sr-section-title">ABOUT THE DESIGNER &amp; DEVELOPER</h2>
+    <p class="sr-about-name">AlexPixels (Alex Smith)</p>
+    <p class="sr-about-body">Alex began his game development journey in high school, but eventually settled on design in the tech industry as a career path after graduating with a BFA in Communication Design. After sometime in the tech industry he began rekindle his love for pixel art and game development. Now he runs a freelance practice spanning web design, pixel art, and much more!</p>
+    <p class="sr-about-body">The funding of this project hasn't been decided yet, but so far moslty everything is created by Alex himself.</p>
+    <p class="sr-about-body">If you want to help please consider checking out the AlexPixels Itch store, the AlexPixels Etsy store, and the AlexPixels Patreon.</p>
+  </section>
+
+  <!-- JOIN THE WAITLIST -->
+  <section id="join-waitlist" class="sr-section sr-waitlist">
+    <h2 class="sr-section-title">JOIN THE WAITLIST</h2>
+    <p class="sr-waitlist-subtitle">Be the first to know when we launch new info about Solar Requiem.</p>
+    <p class="sr-waitlist-disclaimer">Get exclusive updates on when we release new demos, crowd funding, and wishlisting info.</p>
+
+    <form class="sr-waitlist-form" id="sr-waitlist-form">
+      <div class="sr-form-row">
+        <div class="sr-form-field">
+          <div class="sr-input-wrap">
+            <input type="email" id="sr-email" name="email" placeholder="Your email" required>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="sr-btn sr-btn-primary"><span>JOIN NOW</span></button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sr-footer">
+    <img src="/assets/solar-requiem/solar-requiem-logo.svg" alt="Solar Requiem" class="sr-footer-logo">
+    <p class="sr-footer-thanks">THANK YOU FOR VIEWING</p>
+    <p class="sr-footer-copyright">&copy; 2026 Solar Requiem &middot; Alex Pixels</p>
+  </footer>
+
+</div><!-- /.sr-page-wrap -->
+
+  <!-- WAITLIST MODAL -->
+  <div class="sr-modal-overlay" id="sr-waitlist-modal">
+    <div class="sr-modal">
+      <img src="/assets/solar-requiem/full-frame.svg" alt="" class="sr-modal-frame">
+      <button class="sr-modal-close" id="sr-close-waitlist-modal">
+        <img src="/assets/solar-requiem/close-button.svg" alt="Close">
+      </button>
+      <div class="sr-modal-content">
+        <h2 class="sr-section-title sr-modal-title">JOIN THE WAITLIST</h2>
+        <p class="sr-waitlist-subtitle">Be the first to know when we launch new info about Solar Requiem.</p>
+        <p class="sr-waitlist-disclaimer">Get exclusive updates on when we release new demos, crowd funding, and wishlisting info.</p>
+        <form class="sr-waitlist-form" id="sr-modal-waitlist-form">
+          <div class="sr-form-row">
+            <div class="sr-form-field">
+              <div class="sr-input-wrap">
+                <input type="email" id="sr-modal-email" name="email" placeholder="Your email" required>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="sr-btn sr-btn-primary"><span>JOIN NOW</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./solar-requiem.js"></script>
+</body>
+</html>

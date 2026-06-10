@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crossmen Drum &amp; Bugle Corps — San Antonio, TX</title>
+  <meta name="description" content="A world-class drum corps based in San Antonio, Texas. 54 years of building extraordinary performers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== DISCLAIMER ====== -->
+  <div class="disclaimer" role="banner">
+    This is not an official Crossmen website. This is a hypothetical rebrand. This is for demonstration purposes only.
+  </div>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Crossmen Home">
+        <img src="assets/images/crossmen-logo.png" alt="Crossmen">
+      </a>
+
+      <div class="nav__links">
+        <a href="about.html">The Corps</a>
+        <a href="audition.html">Audition</a>
+        <a href="support.html">Support</a>
+        <a href="news.html">News</a>
+        <a href="shop.html">Shop</a>
+      </div>
+
+      <div class="nav__right">
+        <div class="nav__social">
+          <a href="#" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <a href="support.html" class="btn btn--primary btn--compact">Donate</a>
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav__mobile-menu" aria-hidden="true">
+    <a href="about.html">The Corps</a>
+    <a href="audition.html">Audition</a>
+    <a href="support.html">Support</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="support.html" class="btn btn--primary" style="margin-top: var(--space-4);">Donate</a>
+  </div>
+
+  <main>
+
+    <!-- ====== HERO ====== -->
+    <section id="hero" class="hero">
+      <div class="hero__bg">
+        <img class="hero__bg-image" src="assets/images/hero.jpg" alt="Crossmen performing on field">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content">
+        <div class="hero__text">
+          <p class="hero__eyebrow">A world-class drum corps based in San Antonio, Texas</p>
+          <h1 class="hero__title">54 Years of Building Extraordinary Performers</h1>
+        </div>
+        <div class="hero__aside">
+          <p>Applications for 2028 season are open. Click below to get started on your journey!</p>
+          <div class="hero__cta-group">
+            <a href="audition.html" class="btn btn--primary">
+              Audition for 2028
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="support.html" class="btn btn--ghost">Support the Corps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== AUDIENCE PATHS ====== -->
+    <section id="audience-paths" class="audience-paths fade-in">
+      <div class="container">
+        <div class="audience-paths__grid">
+
+          <article class="path-card">
+            <div class="path-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10;" aria-label="Marching performers placeholder"></div>
+            </div>
+            <div class="path-card__body">
+              <h2 class="path-card__title">Want to March?</h2>
+              <p class="path-card__subtitle">Brass, percussion, colorguard. Camps in Nov – Jan</p>
+              <p class="path-card__text">Brass, percussion, colorguard. Camps in Nov – Jan.</p>
+              <a href="audition.html" class="path-card__link">
+                Audition Info
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="path-card">
+            <div class="path-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10;" aria-label="Supporting member placeholder"></div>
+            </div>
+            <div class="path-card__body">
+              <h2 class="path-card__title">Supporting a Member?</h2>
+              <p class="path-card__subtitle">Tuition Assistance, What to Expect, &amp; Frequently Asked Questions</p>
+              <p class="path-card__text">Tuition Assistance. What to Expect. &amp; Frequently asked questions.</p>
+              <a href="about.html" class="path-card__link">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="path-card">
+            <div class="path-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10;" aria-label="Give back placeholder"></div>
+            </div>
+            <div class="path-card__body">
+              <h2 class="path-card__title">Want to Give Back?</h2>
+              <p class="path-card__subtitle">Join Club Unity!</p>
+              <p class="path-card__text">Enable the next generation to have a life-changing Crossmen experience.</p>
+              <a href="support.html" class="path-card__link">
+                Support
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== HISTORY / LEGACY ====== -->
+    <section id="history" class="history fade-in">
+      <div class="container">
+        <div class="history__inner">
+          <h2 class="history__title">The Crossmen Legacy</h2>
+
+          <div class="history__stats">
+            <div class="history__stat">
+              <div class="history__stat-value">50+ Years of Excellence</div>
+              <div class="history__stat-label"></div>
+            </div>
+            <div class="history__stat">
+              <div class="history__stat-value">Unforgettable Performances</div>
+              <div class="history__stat-label"></div>
+            </div>
+            <div class="history__stat">
+              <div class="history__stat-value">World Class Education</div>
+              <div class="history__stat-label"></div>
+            </div>
+            <div class="history__stat">
+              <div class="history__stat-value">Life Long Friendships</div>
+              <div class="history__stat-label"></div>
+            </div>
+            <div class="history__stat">
+              <div class="history__stat-value">25 Time Finalist</div>
+              <div class="history__stat-label"></div>
+            </div>
+            <div class="history__stat">
+              <div class="history__stat-value">Thousands of Alumni</div>
+              <div class="history__stat-label"></div>
+            </div>
+          </div>
+
+          <div class="history__logo-mark">
+            <img src="assets/images/crossmen-legacy.svg" alt="Crossmen legacy emblem">
+          </div>
+
+          <div class="history__founding">
+            <span>PA</span> EST 1974 <span>TX</span>
+          </div>
+
+          <a href="about.html" class="btn btn--ghost" style="margin-top: var(--space-4);">
+            Learn More
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEASON: SHOW + TOUR ====== -->
+    <section id="season" class="season fade-in">
+      <div class="container">
+        <div class="season__grid">
+
+          <!-- Current Show -->
+          <div class="season__show">
+            <div class="season__show-image">
+              <div class="placeholder-img" style="aspect-ratio: 16/9; width: 100%; height: 100%;" aria-label="Planet X show art placeholder">Show Art</div>
+            </div>
+            <div class="season__show-body">
+              <h3 class="season__show-subtitle">Crossmen 2028 Show</h3>
+              <p class="season__show-text">Learn more about the fight for the future of the Crossmen.</p>
+              <a href="#" class="btn btn--ghost">
+                Watch the Announcement
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour Dates -->
+          <div class="season__tour">
+            <div class="season__tour-header">
+              <h2 class="season__tour-title">Upcoming Shows</h2>
+            </div>
+            <div class="season__tour-dates">
+              <div class="tour-date">
+                <span class="tour-date__date">Jun 14</span>
+                <span class="tour-date__location">San Antonio, TX</span>
+              </div>
+              <div class="tour-date">
+                <span class="tour-date__date">Jun 28</span>
+                <span class="tour-date__location">San Antonio, TX</span>
+              </div>
+              <div class="tour-date">
+                <span class="tour-date__date">Jul 24</span>
+                <span class="tour-date__location">Houston, TX</span>
+              </div>
+              <div class="tour-date">
+                <span class="tour-date__date">Jul 28</span>
+                <span class="tour-date__location">Houston, TX</span>
+              </div>
+              <div class="tour-date">
+                <span class="tour-date__date">Jul 24</span>
+                <span class="tour-date__location">DCI Regional, Atlanta, GA</span>
+              </div>
+              <div class="tour-date">
+                <span class="tour-date__date">Aug 8-10</span>
+                <span class="tour-date__location">Finals, Indianapolis, IN</span>
+              </div>
+            </div>
+            <div class="season__tour-footer">
+              <a href="#" class="btn btn--ghost btn--compact">
+                Full Tour Schedule
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SUPPORT CALLOUT ====== -->
+    <section id="support-callout" class="support-callout fade-in">
+      <div class="container">
+        <div class="support-callout__grid">
+
+          <!-- Club Unity -->
+          <div class="support-callout__item">
+            <div class="support-callout__icon">
+              <div class="support-callout__icon-placeholder">Logo</div>
+            </div>
+            <div class="support-callout__content">
+              <h2 class="support-callout__title">Join Club Unity</h2>
+              <p class="support-callout__subtitle">Bones calls upon you, alumni!</p>
+              <p class="support-callout__text">Enable the next generation to have a life-changing Crossmen experience. For just $20 a month you can join 600 other people in support.</p>
+              <a href="support.html" class="btn btn--primary">
+                Join Club Unity
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Make a Gift -->
+          <div class="support-callout__item">
+            <div class="support-callout__icon">
+              <div class="support-callout__icon-placeholder">✕</div>
+            </div>
+            <div class="support-callout__content">
+              <h2 class="support-callout__title">Make a Gift</h2>
+              <p class="support-callout__subtitle">One-time or recurring donations</p>
+              <p class="support-callout__text">There are multiple ways you can give.</p>
+              <a href="support.html" class="btn btn--ghost">
+                Donate
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== STORE ====== -->
+    <section id="store" class="store fade-in">
+      <div class="container">
+        <div class="store__grid">
+          <div class="store__image">
+            <div class="placeholder-img" style="aspect-ratio: 1; width: 100%; height: 100%;" aria-label="Crossmen merch placeholder">Merch Photo</div>
+          </div>
+          <div class="store__content">
+            <p class="store__eyebrow">The Store</p>
+            <h2 class="store__title">The Store</h2>
+            <p class="store__subtitle">Affordable and Jazzy</p>
+            <p class="store__text">We sell winds, percussion, guard, and field equipment at fair and collectable rates. Show your enthusiasm for the Crossmen by sporting some stylishly cool gear!</p>
+            <a href="shop.html" class="btn btn--primary">
+              Shop Now
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== NEWS ====== -->
+    <section id="news" class="news-section fade-in">
+      <div class="container">
+        <div class="news-section__header">
+          <h2 class="news-section__title">News</h2>
+        </div>
+        <div class="news-section__grid">
+
+          <article class="news-card">
+            <div class="news-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10; width: 100%; height: 100%;" aria-label="News article placeholder"></div>
+            </div>
+            <div class="news-card__body">
+              <h3 class="news-card__title">Crossmen Unveil Revitalized Brand &amp; Logo</h3>
+              <p class="news-card__date">May 27, 2026</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10; width: 100%; height: 100%;" aria-label="News article placeholder"></div>
+            </div>
+            <div class="news-card__body">
+              <h3 class="news-card__title">Crossmen Announce Their 2028 Show: Revenge of Planet X</h3>
+              <p class="news-card__date">May 27, 2026</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__image">
+              <div class="placeholder-img" style="aspect-ratio: 16/10; width: 100%; height: 100%;" aria-label="News article placeholder"></div>
+            </div>
+            <div class="news-card__body">
+              <h3 class="news-card__title">Crossmen &amp; Bethel College Announce Partnership</h3>
+              <p class="news-card__date">May 27, 2026</p>
+            </div>
+          </article>
+
+        </div>
+        <div class="news-section__footer">
+          <a href="news.html" class="btn btn--ghost btn--compact">
+            View All News
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SPONSORS ====== -->
+    <section id="sponsors" class="sponsors fade-in">
+      <div class="container">
+        <p class="sponsors__title">Sponsors</p>
+        <div class="sponsors-row">
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="Zildjian">Zildjian</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="Yamaha">Yamaha</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="Dinkles">Dinkles</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="Promark">Promark</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="Evans">Evans</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="StylePlus">StylePlus</div>
+          <div class="placeholder-img" style="width: 80px; height: 28px;" aria-label="URB">URB</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__col">
+          <p class="footer__col-heading">Contact</p>
+          <div class="footer__contact">
+            <p>
+              info@crossmen.org<br>
+              P.O. Box 290291<br>
+              San Antonio, TX 78229
+            </p>
+          </div>
+          <div class="footer__social" style="margin-top: var(--space-4);">
+            <a href="#" aria-label="Twitter / X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-heading">The Corps</p>
+          <div class="footer__links">
+            <a href="about.html">About</a>
+            <a href="audition.html">Audition</a>
+            <a href="support.html">Support</a>
+            <a href="news.html">News</a>
+            <a href="shop.html">Shop</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-heading">Resources</p>
+          <div class="footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Safety</a>
+            <a href="#">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <a href="index.html" class="footer__logo" aria-label="Crossmen Home">
+            <img src="assets/images/crossmen-logo.png" alt="Crossmen">
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__legal">Privacy Policy</p>
+        <p class="footer__legal">Copyright &copy; 2026 Crossmen, Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

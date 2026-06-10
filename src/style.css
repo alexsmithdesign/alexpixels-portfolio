@@ -225,9 +225,8 @@ header {
 nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   align-items: flex-end;
-  margin-top: 10px;
 }
 
 .nav-item {
@@ -949,8 +948,10 @@ a.social-icon {
   max-width: 1740px
 }
 
-#solar-requiem .section-title {
-  text-align: left;
+#solar-requiem .section-logo {
+  display: block;
+  max-width: 400px;
+  height: auto;
   margin-bottom: 60px;
 }
 
@@ -1711,7 +1712,7 @@ a.social-icon {
   }
 
   .hero-title {
-    font-size: 80px;
+    font-size: 48px;
     line-height: 70px;
   }
 
@@ -1735,12 +1736,12 @@ a.social-icon {
     font-size: 48px;
   }
 
-  .hero-title {
-    font-size: 60px;
+  .section-title {
+    font-size: 40px;
   }
 
-  .section-title {
-    font-size: 60px;
+  .gallery-subtitle {
+    font-size: 14px;
   }
 
   .solar-requiem-section {
