@@ -180,7 +180,7 @@ async function openCaseStudy(projectId) {
 async function loadCaseStudyContent(project) {
   caseStudyName.textContent = project.name;
   try {
-    const res = await fetch(`/src/case-studies/${project.id}.html`);
+    const res = await fetch(`/case-studies/${project.id}.html`);
     const html = await res.text();
     caseStudyContent.innerHTML = html;
   } catch {
