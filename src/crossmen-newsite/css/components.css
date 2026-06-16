@@ -210,6 +210,7 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   padding: var(--space-4) var(--space-8);
   font-family: var(--font-body);
@@ -246,14 +247,6 @@
   font-size: var(--text-xs);
 }
 
-.btn__arrow {
-  display: inline-block;
-  transition: transform var(--transition-fast);
-}
-
-.btn:hover .btn__arrow {
-  transform: translateX(4px);
-}
 
 
 /* ========================================
@@ -395,7 +388,7 @@
 }
 
 .footer__social a {
-  color: var(--color-text-muted);
+  color: var(--color-text-body);
   transition: color var(--transition-fast);
   display: flex;
   align-items: center;
@@ -427,7 +420,7 @@
 
 .footer__legal {
   font-size: var(--text-xs);
-  color: var(--color-text-subtle);
+  color: var(--color-text-body);
   text-align: center;
 }
 
@@ -497,8 +490,6 @@
 }
 
 .sponsors-row img {
-  height: 28px;
-  width: auto;
   opacity: 0.5;
   filter: grayscale(1) brightness(2);
   transition: opacity var(--transition-base);
