@@ -49,7 +49,7 @@ document.querySelectorAll('.gallery-instance').forEach(instance => {
   const btnLeft = instance.querySelector('.gallery-arrow-left');
   const btnRight = instance.querySelector('.gallery-arrow-right');
 
-  if (!items.length) return;
+  if (!galleryEl || !dotsContainer || !btnLeft || !btnRight || !items.length) return;
 
   let currentIndex = 0;
   let visibleCount = window.innerWidth <= 768 ? 1 : 5;
@@ -132,7 +132,7 @@ function closeLightbox() {
   }, { once: true });
 }
 
-document.querySelectorAll('.gallery-image-wrapper img').forEach(img => {
+document.querySelectorAll('.gallery-image-wrapper:not([data-case-study]) img').forEach(img => {
   img.style.cursor = 'pointer';
   img.addEventListener('click', () => openLightbox(img.src));
 });
@@ -140,9 +140,78 @@ document.querySelectorAll('.gallery-image-wrapper img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
-    closeLightbox();
+  if (e.key === 'Escape') {
+    if (caseStudyOverlay.classList.contains('visible')) {
+      closeCaseStudy();
+    } else if (lightbox.classList.contains('visible')) {
+      closeLightbox();
+    }
   }
+});
+
+
+/* ===============================
+   CASE STUDY OVERLAY
+================================ */
+const caseStudyOverlay = document.getElementById('case-study-overlay');
+const caseStudyContent = caseStudyOverlay.querySelector('.case-study-content');
+const caseStudyName = caseStudyOverlay.querySelector('.case-study-project-name');
+const caseStudyBackBtn = caseStudyOverlay.querySelector('.case-study-back');
+const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
+
+const projects = [
+  { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
+  { id: 'solar-requiem', name: 'Solar Requiem' },
+  { id: 'web-design', name: 'Web Design' },
+  { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' }
+];
+
+let currentProjectIndex = 0;
+
+async function openCaseStudy(projectId) {
+  const index = projects.findIndex(p => p.id === projectId);
+  if (index === -1) return;
+  currentProjectIndex = index;
+  await loadCaseStudyContent(projects[index]);
+  requestAnimationFrame(() => caseStudyOverlay.classList.add('visible'));
+  document.body.style.overflow = 'hidden';
+}
+
+async function loadCaseStudyContent(project) {
+  caseStudyName.textContent = project.name;
+  try {
+    const res = await fetch(`/src/case-studies/${project.id}.html`);
+    const html = await res.text();
+    caseStudyContent.innerHTML = html;
+  } catch {
+    caseStudyContent.innerHTML = '<p style="color:#fff;">Failed to load content.</p>';
+  }
+}
+
+function closeCaseStudy() {
+  caseStudyOverlay.classList.remove('visible');
+  document.body.style.overflow = '';
+  caseStudyOverlay.addEventListener('transitionend', () => {
+    caseStudyContent.innerHTML = '';
+  }, { once: true });
+}
+
+caseStudyBackBtn.addEventListener('click', closeCaseStudy);
+
+caseStudyNextBtn.addEventListener('click', async () => {
+  currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+  caseStudyContent.style.opacity = '0';
+  await new Promise(r => setTimeout(r, 200));
+  await loadCaseStudyContent(projects[currentProjectIndex]);
+  caseStudyOverlay.scrollTop = 0;
+  caseStudyContent.style.opacity = '1';
+});
+
+document.querySelectorAll('[data-case-study]').forEach(wrapper => {
+  wrapper.style.cursor = 'pointer';
+  wrapper.addEventListener('click', () => {
+    openCaseStudy(wrapper.dataset.caseStudy);
+  });
 });
 
 /* ===============================
@@ -329,3 +398,41 @@ function startEntry() {
 }
 
 setTimeout(startEntry, 800);
+
+/* ===============================
+   EMAIL SUBSCRIBE FORM
+================================ */
+const subscribeForm = document.getElementById('subscribe-form');
+const subscribeMessage = document.getElementById('subscribe-message');
+
+if (subscribeForm) {
+  subscribeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = subscribeForm.email.value.trim();
+    if (!email) return;
+
+    subscribeMessage.textContent = 'Subscribing...';
+    subscribeMessage.className = 'subscribe-message';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        subscribeMessage.textContent = data.message;
+        subscribeMessage.classList.add('success');
+        subscribeForm.reset();
+      } else {
+        subscribeMessage.textContent = data.error || 'Something went wrong';
+        subscribeMessage.classList.add('error');
+      }
+    } catch {
+      subscribeMessage.textContent = 'Network error. Please try again.';
+      subscribeMessage.classList.add('error');
+    }
+  });
+}

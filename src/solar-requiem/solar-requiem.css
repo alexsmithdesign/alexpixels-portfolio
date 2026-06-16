@@ -1112,6 +1112,23 @@ img {
   align-items: center;
   gap: 4px;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sr-waitlist-message {
+  width: 100%;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.sr-waitlist-message.success {
+  color: #7ee8c7;
+}
+
+.sr-waitlist-message.error {
+  color: #ff6b6b;
 }
 
 .sr-form-row {

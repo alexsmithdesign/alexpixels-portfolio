@@ -232,14 +232,40 @@ waitlistModal?.addEventListener('click', (e) => {
    WAITLIST FORMS
 ================================ */
 function handleWaitlistSubmit(form) {
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(form);
-    const email = formData.get('email');
-    alert(`Thank you! We'll notify you at ${email} when Solar Requiem launches.`);
-    form.reset();
-    waitlistModal.classList.remove('open');
-    document.body.style.overflow = '';
+    const email = new FormData(form).get('email');
+    if (!email) return;
+
+    let msg = form.querySelector('.sr-waitlist-message');
+    if (!msg) {
+      msg = document.createElement('p');
+      msg.className = 'sr-waitlist-message';
+      form.appendChild(msg);
+    }
+    msg.textContent = 'Subscribing...';
+    msg.className = 'sr-waitlist-message';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        msg.textContent = data.message;
+        msg.classList.add('success');
+        form.reset();
+      } else {
+        msg.textContent = data.error || 'Something went wrong';
+        msg.classList.add('error');
+      }
+    } catch {
+      msg.textContent = 'Network error. Please try again.';
+      msg.classList.add('error');
+    }
   });
 }
 
