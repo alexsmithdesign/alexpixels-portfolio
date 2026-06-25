@@ -13,11 +13,11 @@
   --color-accent-gradient: linear-gradient(90deg, #861117 0%, #EC1E28 100%);
 
   /* Colors — Text */
-  --color-text-primary: #ffffff;
-  --color-text-muted: #FD8D8D;
+  --color-text-primary: #dedede;
+  --color-text-muted: #c8c8c8;
   --color-text-subtle: #e96b6b;
   --color-text-body: #B3B3B3;
-  --color-heading-start: #ffffff;
+  --color-heading-start: #dedede;
   --color-heading-end: #db6e74;
 
   /* Colors — Borders */

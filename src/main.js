@@ -1,25 +1,171 @@
 import './style.css';
 
 /* ===============================
-   PARALLAX BACKGROUND
+   WARP SPEED STARFIELD
 ================================ */
-let ticking = false;
+const starCanvas = document.getElementById('starfield');
+const starCtx = starCanvas.getContext('2d');
+const STAR_COUNT = window.innerWidth <= 768 ? 150 : 300;
+const SPEED = 2;
+const MAX_DEPTH = 1500;
+let stars = [];
 
-function updateParallax() {
-  const scrolled = window.pageYOffset;
-  document.documentElement.style.setProperty(
-    '--parallax-y',
-    `${scrolled * 0.4}px`
-  );
-  ticking = false;
+function resizeStarfield() {
+  starCanvas.width = window.innerWidth;
+  starCanvas.height = window.innerHeight;
 }
 
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(updateParallax);
-    ticking = true;
+function createStar(zOverride) {
+  return {
+    x: (Math.random() - 0.5) * starCanvas.width * 2,
+    y: (Math.random() - 0.5) * starCanvas.height * 2,
+    z: zOverride !== undefined ? zOverride : Math.random() * MAX_DEPTH,
+  };
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push(createStar());
   }
+}
+
+function drawStarfield() {
+  const w = starCanvas.width;
+  const h = starCanvas.height;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  starCtx.fillStyle = '#000';
+  starCtx.fillRect(0, 0, w, h);
+
+  for (let i = 0; i < stars.length; i++) {
+    const star = stars[i];
+    star.z -= SPEED;
+
+    if (star.z <= 1) {
+      stars[i] = createStar(MAX_DEPTH);
+      continue;
+    }
+
+    const sx = (star.x / star.z) * 200 + cx;
+    const sy = (star.y / star.z) * 200 + cy;
+
+    if (sx < -50 || sx > w + 50 || sy < -50 || sy > h + 50) {
+      stars[i] = createStar(MAX_DEPTH);
+      continue;
+    }
+
+    const prevZ = star.z + SPEED;
+    const px = (star.x / prevZ) * 200 + cx;
+    const py = (star.y / prevZ) * 200 + cy;
+
+    const depth = 1 - star.z / MAX_DEPTH;
+    const alpha = depth * 0.9 + 0.1;
+    const thickness = depth * 2.5 + 0.5;
+
+    const r = 200 + Math.round(55 * depth);
+    const g = 220 + Math.round(35 * depth);
+    const b = 255;
+
+    starCtx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    starCtx.lineWidth = thickness;
+    starCtx.beginPath();
+    starCtx.moveTo(px, py);
+    starCtx.lineTo(sx, sy);
+    starCtx.stroke();
+
+    if (depth > 0.85) {
+      starCtx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
+      starCtx.shadowBlur = 8;
+      starCtx.beginPath();
+      starCtx.arc(sx, sy, thickness, 0, Math.PI * 2);
+      starCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      starCtx.fill();
+      starCtx.shadowBlur = 0;
+    }
+  }
+
+  requestAnimationFrame(drawStarfield);
+}
+
+resizeStarfield();
+initStars();
+requestAnimationFrame(drawStarfield);
+
+window.addEventListener('resize', () => {
+  resizeStarfield();
 });
+
+/* ===============================
+   TYPEWRITER EFFECT
+================================ */
+function prepareTypewriter(el) {
+  const text = el.textContent;
+  el.textContent = '';
+  el.setAttribute('data-tw-ready', '');
+  for (const char of text) {
+    const span = document.createElement('span');
+    span.className = 'tw-char';
+    span.textContent = char === ' ' ? ' ' : char;
+    el.appendChild(span);
+  }
+}
+
+function runTypewriter(el, charDelay = 30) {
+  return new Promise(resolve => {
+    const chars = el.querySelectorAll('.tw-char');
+    if (!chars.length) { resolve(); return; }
+    let i = 0;
+    let lastTime = 0;
+    function step(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      while (i < chars.length && timestamp - lastTime >= charDelay) {
+        chars[i].classList.add('tw-visible');
+        i++;
+        lastTime += charDelay;
+      }
+      if (i < chars.length) {
+        requestAnimationFrame(step);
+      } else {
+        resolve();
+      }
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+/* ===============================
+   PREPARE TYPEWRITER TARGETS
+================================ */
+const heroSubtitle = document.querySelector('.hero-subtitle');
+const heroHeadline = document.querySelector('.hero-headline');
+
+if (heroSubtitle) prepareTypewriter(heroSubtitle);
+if (heroHeadline) prepareTypewriter(heroHeadline);
+
+document.querySelectorAll('.fade-in-section').forEach(section => {
+  section.querySelectorAll('.section-title').forEach(el => prepareTypewriter(el));
+});
+
+/* ===============================
+   HERO ANIMATIONS (page load)
+================================ */
+const heroSocialIcons = document.querySelectorAll('main .social-icon');
+
+setTimeout(() => {
+  if (heroSubtitle) {
+    runTypewriter(heroSubtitle, 25).then(() => {
+      if (heroHeadline) {
+        runTypewriter(heroHeadline, 30).then(() => {
+          heroSocialIcons.forEach((icon, i) => {
+            setTimeout(() => icon.classList.add('icon-animate'), i * 120);
+          });
+        });
+      }
+    });
+  }
+}, 500);
 
 /* ===============================
    SCROLL FADE-IN SECTIONS
@@ -28,10 +174,21 @@ const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+
+      const cards = entry.target.querySelectorAll('.case-study-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 150);
+      });
+
+      const sectionTitle = entry.target.querySelector('.section-title');
+      if (sectionTitle) {
+        setTimeout(() => runTypewriter(sectionTitle, 30), 200);
+      }
+
       fadeObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.1, rootMargin: '0px 0px -15% 0px' });
 
 document.querySelectorAll('.fade-in-section').forEach(el => {
   fadeObserver.observe(el);
@@ -162,19 +319,25 @@ const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
 const projects = [
   { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
   { id: 'solar-requiem', name: 'Solar Requiem' },
+  { id: 'veyne', name: 'Veyne' },
+  { id: 'untune', name: 'Untune' },
   { id: 'web-design', name: 'Web Design' },
   { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' }
 ];
 
 let currentProjectIndex = 0;
 
-async function openCaseStudy(projectId) {
+async function openCaseStudy(projectId, pushState = true) {
   const index = projects.findIndex(p => p.id === projectId);
   if (index === -1) return;
   currentProjectIndex = index;
   await loadCaseStudyContent(projects[index]);
+  caseStudyOverlay.scrollTop = 0;
+  csScrollbarThumb.style.top = '0%';
   requestAnimationFrame(() => caseStudyOverlay.classList.add('visible'));
   document.body.style.overflow = 'hidden';
+  if (pushState) history.pushState(null, '', `/${projectId}`);
+  updateScrollbarHashes();
 }
 
 async function loadCaseStudyContent(project) {
@@ -191,10 +354,38 @@ async function loadCaseStudyContent(project) {
 function closeCaseStudy() {
   caseStudyOverlay.classList.remove('visible');
   document.body.style.overflow = '';
+  history.pushState(null, '', '/');
   caseStudyOverlay.addEventListener('transitionend', () => {
     caseStudyContent.innerHTML = '';
   }, { once: true });
 }
+
+const csScrollbarThumb = document.querySelector('.cs-scrollbar__thumb');
+const csScrollbarTrack = document.querySelector('.cs-scrollbar__track');
+
+function updateScrollbarHashes() {
+  csScrollbarTrack.querySelectorAll('.cs-scrollbar__hash').forEach(h => h.remove());
+  requestAnimationFrame(() => {
+    const scrollRange = caseStudyOverlay.scrollHeight - caseStudyOverlay.clientHeight;
+    if (scrollRange <= 0) return;
+    caseStudyContent.querySelectorAll('.case-study-headline').forEach(el => {
+      const pct = (el.offsetTop / scrollRange) * 100;
+      const hash = document.createElement('div');
+      hash.className = 'cs-scrollbar__hash';
+      hash.style.top = pct + '%';
+      csScrollbarTrack.appendChild(hash);
+    });
+  });
+}
+
+caseStudyOverlay.addEventListener('scroll', () => {
+  const scrollTop = caseStudyOverlay.scrollTop;
+  const scrollHeight = caseStudyOverlay.scrollHeight - caseStudyOverlay.clientHeight;
+  if (scrollHeight > 0) {
+    const pct = (scrollTop / scrollHeight) * 100;
+    csScrollbarThumb.style.top = pct + '%';
+  }
+});
 
 caseStudyBackBtn.addEventListener('click', closeCaseStudy);
 
@@ -204,7 +395,10 @@ caseStudyNextBtn.addEventListener('click', async () => {
   await new Promise(r => setTimeout(r, 200));
   await loadCaseStudyContent(projects[currentProjectIndex]);
   caseStudyOverlay.scrollTop = 0;
+  csScrollbarThumb.style.top = '0%';
   caseStudyContent.style.opacity = '1';
+  history.pushState(null, '', `/${projects[currentProjectIndex].id}`);
+  updateScrollbarHashes();
 });
 
 document.querySelectorAll('[data-case-study]').forEach(wrapper => {
@@ -213,6 +407,24 @@ document.querySelectorAll('[data-case-study]').forEach(wrapper => {
     openCaseStudy(wrapper.dataset.caseStudy);
   });
 });
+
+window.addEventListener('popstate', () => {
+  const path = window.location.pathname.replace(/^\//, '');
+  const match = projects.find(p => p.id === path);
+  if (match) {
+    openCaseStudy(match.id, false);
+  } else if (caseStudyOverlay.classList.contains('visible')) {
+    caseStudyOverlay.classList.remove('visible');
+    document.body.style.overflow = '';
+    caseStudyContent.innerHTML = '';
+  }
+});
+
+(function handleInitialRoute() {
+  const path = window.location.pathname.replace(/^\//, '');
+  const match = projects.find(p => p.id === path);
+  if (match) openCaseStudy(match.id, false);
+})();
 
 /* ===============================
    SOLAR REQUIEM THUMBNAILS

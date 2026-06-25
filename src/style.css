@@ -75,27 +75,15 @@ body {
   color: #35030c;
 }
 
-/* Parallax Background */
-body::before {
-  content: '';
+/* Warp Speed Starfield */
+#starfield {
   position: fixed;
-  top: -300vh;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 800vh;
-  background-image: url('/assets/bg_stars.jpg');
-  background-repeat: repeat;
-  background-size: 100% auto;
-  background-position: center top;
+  height: 100%;
   z-index: -2;
-  will-change: transform, background-position;
-  transform: translateY(var(--parallax-y, 0px));
-  animation: bgDrift 60s linear infinite;
-}
-
-@keyframes bgDrift {
-  from { background-position-y: 0; }
-  to { background-position-y: 3032px; }
+  pointer-events: none;
 }
 
 /* Red Texture Overlay */
@@ -139,6 +127,48 @@ main {
 .fade-in-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===== Typewriter Effect ===== */
+.tw-char {
+  opacity: 0;
+}
+
+.tw-char.tw-visible {
+  opacity: 1;
+}
+
+/* ===== Staggered Case Study Cards ===== */
+.case-study-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.case-study-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Staggered Social Icons (hero only) ===== */
+main .social-icon {
+  opacity: 0;
+}
+
+main .social-icon.icon-animate {
+  animation: iconPopIn 0.3s ease forwards;
+}
+
+@keyframes iconPopIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .tw-char { opacity: 1; }
+  .case-study-card { opacity: 1; transform: none; transition: none; }
+  main .social-icon { opacity: 1; animation: none; }
 }
 
 /* ===== HUD Corner Overlays ===== */
@@ -289,6 +319,10 @@ nav {
   background-repeat: no-repeat;
   background-position: center center;
   height: 116px;
+  opacity: 1;
+}
+
+.hero-subtitle:not([data-tw-ready]) {
   opacity: 0;
   animation: heroTextFadeIn 0.8s ease 0.5s forwards;
 }
@@ -302,6 +336,10 @@ nav {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color:#a0a0a0;
+  opacity: 1;
+}
+
+.hero-headline:not([data-tw-ready]) {
   opacity: 0;
   animation: heroTextFadeIn 0.8s ease 0.5s forwards;
 }
@@ -1017,6 +1055,7 @@ a.social-icon {
   align-items: center;
   gap: 20px;
   text-decoration: none;
+  filter: drop-shadow(0px 0px 60px rgba(14, 196, 202, 0.8)) drop-shadow(0px 0px 20px rgba(14, 196, 202, 0.5));
 }
 
 .solar-intro-cta::before,
@@ -1029,12 +1068,10 @@ a.social-icon {
 
 .solar-intro-cta span {
   display: inline-block;
-  padding: 29px 0 0 0;
-  height: 86px;
-  width: 290px;
-  background-image: url(/assets/whitebutton.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  padding: 16px 40px;
+  background: linear-gradient(to right, #0ECACA 0%, #0ECACA 50%, #85d1d1 50%, #fff 100%);
+  background-size: 200% 100%;
+  background-position: right;
   color: #000;
   font-family: 'Rajdhani', sans-serif;
   font-size: 20px;
@@ -1044,6 +1081,12 @@ a.social-icon {
   letter-spacing: 0.1em;
   text-decoration: none;
   flex-shrink: 0;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  transition: background-position 0.4s ease;
+}
+
+.solar-intro-cta:hover span {
+  background-position: left;
 }
 
 .solar-main-image-container {
@@ -1144,7 +1187,7 @@ a.social-icon {
 .content-card-inner {
   padding: 60px 40px;
   height: 100%;
-  background-image: url('/assets/scanline-anim.gif');
+  background-image: url('/assets/dots-stagger-texture.png');
   position: relative;
 }
 
@@ -1333,24 +1376,33 @@ a.social-icon {
 
 .patreon-button {
   display: inline-block;
-  padding: 29px 0 0 0;
-  height: 86px;
-  width: 290px;
+  padding: 16px 40px;
+  position: relative;
   font-family: 'Rajdhani', sans-serif;
   font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
   color: #000;
-  background-image: url(/assets/whitebutton.svg);
-  background-size: cover;
   white-space: nowrap;
   text-align: center;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  filter: drop-shadow(0px 0px 60px rgba(14, 196, 202, 0.8)) drop-shadow(0px 0px 20px rgba(14, 196, 202, 0.5));
 }
 
-.patreon-button:hover {
-  transform: scale(1.05);
+.patreon-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #0ECACA 0%, #0ECACA 50%, #85d1d1 50%, #fff 100%);
+  background-size: 200% 100%;
+  background-position: right;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  transition: background-position 0.4s ease;
+  z-index: -1;
+}
+
+.patreon-button:hover::before {
+  background-position: left;
 }
 
 /* Universal Content Card Corner Decorations */
@@ -1664,9 +1716,7 @@ a.social-icon {
   }
 
   .solar-intro-cta span {
-    width: 220px;
-    height: 66px;
-    padding: 22px 0 0 0;
+    padding: 12px 32px;
     font-size: 16px;
   }
   
@@ -1873,7 +1923,7 @@ a.social-icon {
   .character-portrait {
     width: 70%;
   }
-
+ 
   /* Character info column: stack and center on mobile so it fits */
   .character-info-column {
     width: 100%;
@@ -2091,7 +2141,7 @@ a.social-icon {
   display: flex;
   align-items: center;
   padding: 0;
-  background: rgba(112, 112, 112, 0.1) url('/assets/scanline-anim.gif') repeat; 
+  background: rgba(112, 112, 112, 0.1) url('/assets/dots-stagger-texture.png') repeat; 
   background-blend-mode: overlay;
   flex-direction: row;
   justify-content: space-between;
@@ -2198,22 +2248,24 @@ a.social-icon {
   margin: 32px 0;
   text-decoration: none;
   transition: opacity 0.25s ease;
+  filter: drop-shadow(0px 0px 60px rgba(14, 196, 202, 0.8)) drop-shadow(0px 0px 20px rgba(14, 196, 202, 0.5));
 }
 
 .case-study-cta span {
   display: inline-block;
-  padding: 29px 0 0 0;
-  height: 86px;
-  width: 290px;
+  padding: 16px 40px;
   font-family: 'Rajdhani', sans-serif;
   font-size: 22px;
   font-weight: 500;
   text-transform: uppercase;
   color: #000;
-  background-image: url(/assets/whitebutton.svg);
-  background-size: cover;
+  background: linear-gradient(to right, #0ECACA 0%, #0ECACA 50%, #85d1d1 50%, #fff 100%);
+  background-size: 200% 100%;
+  background-position: right;
   white-space: nowrap;
   text-align: center;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  transition: background-position 0.4s ease;
 }
 
 .case-study-cta::before,
@@ -2224,8 +2276,8 @@ a.social-icon {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.case-study-cta:hover {
-  opacity: 0.85;
+.case-study-cta:hover span {
+  background-position: left;
 }
 
 .case-study-image {
@@ -2233,6 +2285,10 @@ a.social-icon {
   height: auto;
   margin: 48px auto;
   display: block;
+}
+
+.case-study-placeholder {
+  display: none;
 }
 
 @media (max-width: 767px) {
@@ -2254,13 +2310,83 @@ a.social-icon {
   }
 
   .case-study-cta span {
-    width: 220px;
-    height: 66px;
-    padding: 22px 0 0 0;
+    padding: 12px 32px;
     font-size: 16px;
   }
 
   .case-study-project-name {
     font-size: 12px;
+  }
+}
+
+/* Custom case study scrollbar */
+.cs-scrollbar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60vh;
+  z-index: 100001;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.case-study-overlay.visible ~ .cs-scrollbar {
+  opacity: 1;
+}
+
+.cs-scrollbar__track {
+  position: relative;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 auto;
+}
+
+.cs-scrollbar__track::before,
+.cs-scrollbar__track::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cs-scrollbar__track::before {
+  top: 0;
+}
+
+.cs-scrollbar__track::after {
+  bottom: 0;
+}
+
+.cs-scrollbar__thumb {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.6), 0 0 24px 8px rgba(255, 255, 255, 0.3);
+  top: 0;
+  transition: top 0.05s linear;
+}
+
+.cs-scrollbar__hash {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 767px) {
+  .cs-scrollbar {
+    display: none;
   }
 }

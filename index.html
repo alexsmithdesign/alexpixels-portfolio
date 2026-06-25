@@ -11,6 +11,7 @@
   <title>Alex Pixels - Design</title>
 </head>
 <body>
+  <canvas id="starfield"></canvas>
   <!-- HUD Corner Overlays -->
   <div class="hud-overlay hud-top-left"></div>
   <div class="hud-overlay hud-top-right"></div>
@@ -104,6 +105,18 @@
             <h4 class="case-study-card-title">Solar Requiem</h4>
             <div class="case-study-card-image">
               <img src="/assets/sr-home.png" alt="Solar Requiem">
+            </div>
+          </div>
+          <div class="case-study-card" data-case-study="veyne" data-project-name="Veyne">
+            <h4 class="case-study-card-title">Veyne</h4>
+            <div class="case-study-card-image">
+              <img src="/assets/veyne-cover.jpg" alt="Veyne">
+            </div>
+          </div>
+          <div class="case-study-card" data-case-study="untune" data-project-name="Untune">
+            <h4 class="case-study-card-title">Untune</h4>
+            <div class="case-study-card-image">
+              <img src="/assets/untune-cover.jpg" alt="Untune">
             </div>
           </div>
           <div class="case-study-card" data-case-study="web-design" data-project-name="Web Design">
@@ -372,6 +385,11 @@
       <button class="case-study-next">Next Project &#8594;</button>
     </nav>
     <div class="case-study-content"></div>
+  </div>
+  <div class="cs-scrollbar" aria-hidden="true">
+    <div class="cs-scrollbar__track">
+      <div class="cs-scrollbar__thumb"></div>
+    </div>
   </div>
 
   <script type="module" src="/src/main.js"></script>

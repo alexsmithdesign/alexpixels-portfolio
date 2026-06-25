@@ -38,7 +38,7 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgb(36 0 0) 0%, rgb(171 23 23) 40%, rgb(27 0 0) 100%);
+  background: linear-gradient(to top, rgb(0 0 0) 0%, rgb(187 187 187) 40%, rgb(0 0 0 / 85%) 100%);
   mix-blend-mode: multiply;
   z-index: 1;
 }
@@ -50,28 +50,34 @@
   padding-inline: var(--space-8);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .hero__content {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
 .hero__text {
   max-width: 1000px;
+  text-align: center;
 }
 
 .hero__eyebrow {
   font-family: var(--font-body);
-  font-size: var(--text-md);
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-muted);
   margin-bottom: var(--space-4);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8), 0 4px 32px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  padding: var(--space-2) var(--space-6);
+  display: inline-block;
 }
 
 .hero__title {
@@ -84,9 +90,14 @@
   -webkit-background-clip: unset;
   background-clip: unset;
   -webkit-text-fill-color: var(--color-text-primary);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8), 0 4px 32px rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 768px) {
+  .hero__eyebrow {
+    font-size: var(--text-md);
+  }
+
   .hero__title {
     font-size: var(--text-6xl);
   }
@@ -94,20 +105,41 @@
 
 @media (min-width: 1200px) {
   .hero__title {
-    font-size: 7rem;
+    font-size: 8rem;
   }
 }
 
 .hero__cta-group {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .hero__cta-group {
+    gap: 0;
+  }
+
+  .hero__cta-group .btn:first-child {
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
+  }
+
+  .hero__cta-group .btn:last-child {
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+  }
 }
 
 .hero__aside {
   max-width: 800px;
-  padding: var(--space-8);
+  padding: var(--space-12);
   position: relative;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
 }
 
 .hero__corner {
@@ -387,7 +419,6 @@
 .store__grid {
   display: grid;
   grid-template-columns: 1fr;
-  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -435,15 +466,6 @@
   padding: var(--space-8);
 }
 
-.store__eyebrow {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-text-subtle);
-  margin-bottom: var(--space-2);
-}
-
 .store__title {
   font-family: var(--font-heading);
   font-size: var(--text-3xl);
@@ -454,18 +476,17 @@
 }
 
 .store__subtitle {
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-regular);
-  font-style: italic;
-  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-subtle);
   text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: var(--tracking-wider);
   margin-bottom: var(--space-6);
 }
 
 .store__text {
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
   color: var(--color-text-body);
   line-height: 1.7;
   margin-bottom: var(--space-6);
@@ -587,8 +608,10 @@
   border-radius: var(--radius-full);
   padding: var(--space-8);
   display: flex;
+  flex-direction: column;
   gap: var(--space-6);
   align-items: center;
+  text-align: center;
   background-color: var(--color-bg-primary);
   background-image: url('../assets/images/stone-bg-red.jpg');
   background-repeat: repeat;
@@ -597,6 +620,13 @@
   outline-offset: 6px;
   max-width: 1000px;
   margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .support-callout__item {
+    flex-direction: row;
+    text-align: left;
+  }
 }
 
 .support-callout__content {
@@ -652,7 +682,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-8);
-  background: var(--color-bg-card);
+  background: transparent;
 }
 
 .gift-card__content {
@@ -660,6 +690,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 
