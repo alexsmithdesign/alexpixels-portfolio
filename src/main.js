@@ -318,6 +318,7 @@ const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
 
 const projects = [
   { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
+  { id: 'eidon', name: 'Eidon' },
   { id: 'solar-requiem', name: 'Solar Requiem' },
   { id: 'veyne', name: 'Veyne' },
   { id: 'untune', name: 'Untune' },
