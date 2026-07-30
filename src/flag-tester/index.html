@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flag Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <clipPath id="curved-silk-clip" clipPathUnits="userSpaceOnUse">
+          <path d="M0 300.046V0.228508C20.6951 -0.683218 94.7064 0.649305 225.191 13.2732C355.675 25.8971 442.454 61.5947 469.533 77.8655C476.057 208.944 476.478 290.578 469.533 376C455.222 363.236 403.5 341 306.007 319.878C210.324 299.148 63.5 300.046 0 300.046Z"/>
+        </clipPath>
+      </defs>
+    </svg>
+
+    <main class="app">
+
+      <!-- Canvas area (left ~75%) -->
+      <section class="canvas-area">
+
+        <div class="canvas-header">
+          <div class="logo">
+            <img class="logo-icon" src="./assets/flag-tester-logo.svg" width="24" height="19" alt="" aria-hidden="true" />
+            <span class="logo-text">FLAG TESTER</span>
+          </div>
+          <div class="header-controls">
+            <div class="header-toggle" id="count-toggle">
+              <span class="header-toggle-label">FLAGS</span>
+              <div class="toggle-buttons">
+                <button class="toggle-btn active" id="count-1">1</button>
+                <button class="toggle-btn" id="count-12">12</button>
+              </div>
+            </div>
+            <div class="header-toggle" id="sync-section" hidden>
+              <span class="header-toggle-label">SYNC</span>
+              <div class="toggle-buttons">
+                <button class="toggle-btn active" id="sync-unison">Unison</button>
+                <button class="toggle-btn" id="sync-alternate">Alternate</button>
+              </div>
+            </div>
+            <div class="zoom-controls">
+              <span class="zoom-label">ZOOM</span>
+              <button class="zoom-btn" id="zoom-out" aria-label="Zoom out">&ndash;</button>
+              <button class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-stage" id="flag-stage">
+          <!-- Flag + pole built by flag.js -->
+        </div>
+
+        <div class="bottom-controls">
+          <div class="bpm-control">
+            <span class="control-label">SPIN SPEED</span>
+            <div class="bpm-value-group">
+              <input type="text" class="bpm-input" id="bpm-value" value="60" inputmode="numeric" />
+              <span class="bpm-unit">BPM</span>
+              <div class="bpm-arrows">
+                <button class="bpm-arrow" id="bpm-up" aria-label="Increase BPM">&#9650;</button>
+                <button class="bpm-arrow" id="bpm-down" aria-label="Decrease BPM">&#9660;</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="play-btn" id="play-btn" aria-label="Play">
+            <span class="play-icon" id="play-icon">&#9654;</span>
+          </button>
+
+          <div class="direction-control">
+            <span class="control-label">DIRECTION</span>
+            <div class="direction-buttons">
+              <button class="direction-btn active" id="dir-ccw" aria-label="Counterclockwise">&#8634;</button>
+              <button class="direction-btn" id="dir-cw" aria-label="Clockwise">&#8635;</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Design panel (right ~25%) -->
+      <aside class="design-panel">
+        <h2 class="panel-title">DESIGN</h2>
+
+        <div class="panel-section">
+          <label class="panel-label">BG COLOR</label>
+          <input type="color" id="bg-color" class="color-swatch" value="#1E562B" />
+        </div>
+
+        <div class="panel-section">
+          <label class="panel-label">FLAG IMAGE</label>
+          <div class="image-preview" id="image-preview"></div>
+          <button class="panel-btn" id="edit-placement-btn">Edit Placement</button>
+          <button class="panel-btn" id="upload-btn">Upload Image</button>
+          <input type="file" id="file-input" accept="image/*" hidden />
+          <span class="file-hint">PNG or JPG · Max 1MB · Transparent PNG recommended</span>
+          <span class="file-error" id="file-error" hidden>File exceeds 1MB limit.</span>
+        </div>
+
+        <div class="panel-section">
+          <label class="panel-label">POLE COLOR</label>
+          <input type="color" id="pole-color" class="color-swatch" value="#B0B0B0" />
+        </div>
+
+        <div class="panel-footer">
+          <a class="support-link" href="https://ko-fi.com/alexpixels" target="_blank" rel="noopener">Support Creator</a>
+          <a class="panel-credit" href="https://alexpixels.com" target="_blank" rel="noopener">Designed &amp; Developed by ALEXPIXELS</a>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- Edit Placement Modal -->
+    <div class="placement-modal" id="placement-modal">
+      <div class="placement-overlay" id="placement-overlay"></div>
+      <div class="placement-content">
+        <div class="placement-viewport" id="placement-viewport">
+          <div class="placement-img-wrapper" id="placement-img-wrapper">
+            <img class="placement-img" id="placement-img" draggable="false" alt="" />
+          </div>
+          <svg class="placement-shape-overlay" viewBox="0 0 475 376" width="475" height="376">
+            <defs>
+              <mask id="placement-mask-curved">
+                <rect width="475" height="376" fill="white"/>
+                <path d="M0 300.046V0.228508C20.6951 -0.683218 94.7064 0.649305 225.191 13.2732C355.675 25.8971 442.454 61.5947 469.533 77.8655C476.057 208.944 476.478 290.578 469.533 376C455.222 363.236 403.5 341 306.007 319.878C210.324 299.148 63.5 300.046 0 300.046Z" fill="black"/>
+              </mask>
+            </defs>
+            <rect width="475" height="376" fill="rgba(0,0,0,0.5)" mask="url(#placement-mask-curved)"/>
+            <path d="M0 300.046V0.228508C20.6951 -0.683218 94.7064 0.649305 225.191 13.2732C355.675 25.8971 442.454 61.5947 469.533 77.8655C476.057 208.944 476.478 290.578 469.533 376C455.222 363.236 403.5 341 306.007 319.878C210.324 299.148 63.5 300.046 0 300.046Z" fill="none" stroke="white" stroke-width="2" stroke-dasharray="6 4"/>
+          </svg>
+        </div>
+        <div class="placement-zoom-controls">
+          <button class="placement-zoom-btn" id="placement-zoom-out" aria-label="Zoom out">&ndash;</button>
+          <button class="placement-zoom-btn" id="placement-zoom-in" aria-label="Zoom in">+</button>
+        </div>
+        <div class="placement-actions">
+          <button class="panel-btn placement-cancel-btn" id="placement-cancel">Cancel</button>
+          <button class="panel-btn placement-confirm-btn" id="placement-confirm">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-screen" id="loading-screen">
+      <div class="loading-spinner"></div>
+      <span class="loading-text">Loading...</span>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

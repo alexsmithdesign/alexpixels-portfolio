@@ -319,9 +319,8 @@ const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
 const projects = [
   { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
   { id: 'eidon', name: 'Eidon' },
+  { id: 'flag-tester', name: 'Flag Tester' },
   { id: 'solar-requiem', name: 'Solar Requiem' },
-  { id: 'veyne', name: 'Veyne' },
-  { id: 'untune', name: 'Untune' },
   { id: 'web-design', name: 'Web Design' },
   { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' }
 ];

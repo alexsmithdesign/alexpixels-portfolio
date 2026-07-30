@@ -1,7 +1,7 @@
 {
-  "name": "my-portfolio",
-  "private": true,
+  "name": "flag-tester",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^7.2.4"
+    "vite": "^8.1.0"
   },
   "dependencies": {
-    "three": "^0.185.1"
+    "three": "^0.185.0"
   }
 }
