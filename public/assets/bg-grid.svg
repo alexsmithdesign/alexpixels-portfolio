@@ -1,0 +1,51 @@
+<svg width="380" height="380" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2532_144)">
+<path d="M190 0V380" stroke="#7AFFFF" stroke-width="0.5"/>
+<rect x="188" y="378" width="4" height="4" fill="#7AFFFF"/>
+<path d="M380.005 189.995L0.00488281 189.995" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M381.001 -1.00354L-0.999032 380.996" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M381.008 380.996L-0.992196 -1.00355" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M380.005 95L0.00488281 95" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M380.005 380L0.00488281 380" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M380.005 285L0.00488281 285" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M380.005 0L0.00488281 -1.66103e-05" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M285.005 380L285.005 0" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M0.00488281 380L0.00491603 0" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M95.0049 380L95.0049 0" stroke="#7AFFFF" stroke-width="0.5"/>
+<path d="M380.005 380L380.005 0" stroke="#7AFFFF" stroke-width="0.5"/>
+<rect x="188" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="188" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="188" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="188" y="283" width="4" height="4" fill="#7AFFFF"/>
+<rect x="93" y="378" width="4" height="4" fill="#7AFFFF"/>
+<rect x="93" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="93" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="93" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="93" y="283" width="4" height="4" fill="#7AFFFF"/>
+<rect x="-2" y="378" width="4" height="4" fill="#7AFFFF"/>
+<rect x="-2" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="-2" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="-2" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="-2" y="283" width="4" height="4" fill="#7AFFFF"/>
+<rect x="283" y="378" width="4" height="4" fill="#7AFFFF"/>
+<rect x="283" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="283" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="283" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="283" y="283" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="378" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="378" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="93" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="-2" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="188" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="283" width="4" height="4" fill="#7AFFFF"/>
+<rect x="378" y="283" width="4" height="4" fill="#7AFFFF"/>
+</g>
+<defs>
+<clipPath id="clip0_2532_144">
+<rect width="380" height="380" fill="white"/>
+</clipPath>
+</defs>
+</svg>

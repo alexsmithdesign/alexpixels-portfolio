@@ -47,7 +47,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #000;
+  background-color: #0f0f10;
 }
 
 ::selection {
@@ -75,38 +75,16 @@ body {
   color: #35030c;
 }
 
-/* Warp Speed Starfield */
-#starfield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  pointer-events: none;
-}
-
-/* Red Texture Overlay */
-body::after {
+body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/assets/grid-gradient.png');
-  background-blend-mode: overlay;
-  background-repeat: repeat-y;
-  background-size: 1124px 914px;
-  background-position: 0 0;
-  opacity: 0.75;
-  z-index: -1;
+  inset: 0;
+  background-image: url('/assets/bg-grid.svg');
+  background-repeat: repeat;
+  background-size: 380px 380px;
+  opacity: 0.1;
   pointer-events: none;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 main {
@@ -247,7 +225,7 @@ header {
 nav {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 30px;
   align-items: flex-end;
 }
 
@@ -256,18 +234,14 @@ nav {
   align-items: center;
   gap: 12px;
   position: relative;
-  margin-right: 72px
-}
-
-.nav-item:nth-child(2) {
   margin-right: 48px;
 }
 
-.nav-item:nth-child(3) {
+.nav-item:nth-child(2) {
   margin-right: 24px;
 }
 
-.nav-item:nth-child(4) {
+.nav-item:nth-child(3) {
   margin-right: 0;
 }
 
@@ -640,10 +614,16 @@ a.social-icon {
   letter-spacing: 1px;
 }
 
-/* ===== New Gallery Section (Hero Replacement) ===== */
+/* ===== Header Social Icons ===== */
+.header-social-icons {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* ===== Gallery Section ===== */
 .hero-gallery-section {
   padding: 0;
-  margin: 140px 0 240px 0;
+  margin: 100px 0 240px 0;
   flex-shrink: 0;
 }
 
@@ -970,7 +950,7 @@ a.social-icon {
 /* Section Title */
 .section-title {
   font-family: 'Merquise';
-  font-size: 120px;
+  font-size: 60px;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 0px 0px 150px rgba(14, 196, 202, 1), 0px 0px 60px rgba(14, 196, 202, 0.8);
@@ -1294,45 +1274,137 @@ a.social-icon {
 /* Shop Section */
 .shop-section {
   position: relative;
-  padding: 100px 40px;
-  margin-bottom: 128px;
+  padding: 200px 40px 60px 40px;
 }
 
-.shop-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
-  max-width: 1400px;
-  margin: 0 auto;
+.shop-section .section-title {
+  text-align: left;
 }
 
 .shop-category {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
+  margin: 0 0 60px 0;
 }
 
 .shop-category-title {
   font-family: 'Merquise';
-  font-size: 27px;
+  font-size: 18px;
   font-weight: bold;
   color: #ffffff;
-  text-shadow: 0px 0px 100px rgba(225, 16, 54, 1), 0px 0px 32px rgba(225, 16, 54, 0.6);
-  letter-spacing: 7px;
+  letter-spacing: 5px;
   text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.shop-image-merch {
-  width: 220px;
-  height: auto;
-  object-fit: cover;
+.shop-category-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.shop-image-assets {
-  width: 340px;
+.shop-items-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.shop-items-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.shop-scrollbar {
+  position: relative;
+  height: 20px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.shop-scrollbar__track {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.shop-scrollbar__track::before,
+.shop-scrollbar__track::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.shop-scrollbar__track::before {
+  left: 0;
+}
+
+.shop-scrollbar__track::after {
+  right: 0;
+}
+
+.shop-scrollbar__thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.6), 0 0 24px 8px rgba(255, 255, 255, 0.3);
+  left: 0;
+  cursor: grab;
+  transition: left 0.05s linear;
+}
+
+.shop-scrollbar__thumb:active {
+  cursor: grabbing;
+}
+
+.shop-scrollbar.hidden {
+  display: none;
+}
+
+.shop-item-card {
+  flex: 0 0 auto;
+  width: 320px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0f0f10;
+}
+
+.shop-item-card a {
+  text-decoration: none;
+  display: block;
+}
+
+.shop-item-card img {
+  width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.shop-item-card a:hover img {
+  opacity: 0.85;
+}
+
+.shop-item-link {
+  display: block;
+  padding: 10px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.5px;
 }
 
 /* Patreon Section */
@@ -1759,18 +1831,12 @@ a.social-icon {
   }
 }
 
-@media (max-width: 1400px) {
-  /* Shop: stack columns on mobile */
-  .shop-content {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 768px) {
 
   .shop-section {
-    padding: 100px 20px;
+    padding: 160px 16px 40px 16px;
+    overflow: visible;
   }
-}
-
-@media (max-width: 768px) {
 
   .hero-collage {
     width: 100%;
@@ -2059,8 +2125,8 @@ a.social-icon {
 
 .case-study-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   padding: 0 48px;
   max-width: 1600px;
   margin: 0 auto;
@@ -2099,6 +2165,12 @@ a.social-icon {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+@media (max-width: 1024px) {
+  .case-study-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 767px) {

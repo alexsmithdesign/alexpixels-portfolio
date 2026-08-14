@@ -1,103 +1,6 @@
 import './style.css';
 
 /* ===============================
-   WARP SPEED STARFIELD
-================================ */
-const starCanvas = document.getElementById('starfield');
-const starCtx = starCanvas.getContext('2d');
-const STAR_COUNT = window.innerWidth <= 768 ? 150 : 300;
-const SPEED = 2;
-const MAX_DEPTH = 1500;
-let stars = [];
-
-function resizeStarfield() {
-  starCanvas.width = window.innerWidth;
-  starCanvas.height = window.innerHeight;
-}
-
-function createStar(zOverride) {
-  return {
-    x: (Math.random() - 0.5) * starCanvas.width * 2,
-    y: (Math.random() - 0.5) * starCanvas.height * 2,
-    z: zOverride !== undefined ? zOverride : Math.random() * MAX_DEPTH,
-  };
-}
-
-function initStars() {
-  stars = [];
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push(createStar());
-  }
-}
-
-function drawStarfield() {
-  const w = starCanvas.width;
-  const h = starCanvas.height;
-  const cx = w / 2;
-  const cy = h / 2;
-
-  starCtx.fillStyle = '#000';
-  starCtx.fillRect(0, 0, w, h);
-
-  for (let i = 0; i < stars.length; i++) {
-    const star = stars[i];
-    star.z -= SPEED;
-
-    if (star.z <= 1) {
-      stars[i] = createStar(MAX_DEPTH);
-      continue;
-    }
-
-    const sx = (star.x / star.z) * 200 + cx;
-    const sy = (star.y / star.z) * 200 + cy;
-
-    if (sx < -50 || sx > w + 50 || sy < -50 || sy > h + 50) {
-      stars[i] = createStar(MAX_DEPTH);
-      continue;
-    }
-
-    const prevZ = star.z + SPEED;
-    const px = (star.x / prevZ) * 200 + cx;
-    const py = (star.y / prevZ) * 200 + cy;
-
-    const depth = 1 - star.z / MAX_DEPTH;
-    const alpha = depth * 0.9 + 0.1;
-    const thickness = depth * 2.5 + 0.5;
-
-    const r = 200 + Math.round(55 * depth);
-    const g = 220 + Math.round(35 * depth);
-    const b = 255;
-
-    starCtx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    starCtx.lineWidth = thickness;
-    starCtx.beginPath();
-    starCtx.moveTo(px, py);
-    starCtx.lineTo(sx, sy);
-    starCtx.stroke();
-
-    if (depth > 0.85) {
-      starCtx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
-      starCtx.shadowBlur = 8;
-      starCtx.beginPath();
-      starCtx.arc(sx, sy, thickness, 0, Math.PI * 2);
-      starCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-      starCtx.fill();
-      starCtx.shadowBlur = 0;
-    }
-  }
-
-  requestAnimationFrame(drawStarfield);
-}
-
-resizeStarfield();
-initStars();
-requestAnimationFrame(drawStarfield);
-
-window.addEventListener('resize', () => {
-  resizeStarfield();
-});
-
-/* ===============================
    TYPEWRITER EFFECT
 ================================ */
 function prepareTypewriter(el) {
@@ -138,34 +41,9 @@ function runTypewriter(el, charDelay = 30) {
 /* ===============================
    PREPARE TYPEWRITER TARGETS
 ================================ */
-const heroSubtitle = document.querySelector('.hero-subtitle');
-const heroHeadline = document.querySelector('.hero-headline');
-
-if (heroSubtitle) prepareTypewriter(heroSubtitle);
-if (heroHeadline) prepareTypewriter(heroHeadline);
-
 document.querySelectorAll('.fade-in-section').forEach(section => {
   section.querySelectorAll('.section-title').forEach(el => prepareTypewriter(el));
 });
-
-/* ===============================
-   HERO ANIMATIONS (page load)
-================================ */
-const heroSocialIcons = document.querySelectorAll('main .social-icon');
-
-setTimeout(() => {
-  if (heroSubtitle) {
-    runTypewriter(heroSubtitle, 25).then(() => {
-      if (heroHeadline) {
-        runTypewriter(heroHeadline, 30).then(() => {
-          heroSocialIcons.forEach((icon, i) => {
-            setTimeout(() => icon.classList.add('icon-animate'), i * 120);
-          });
-        });
-      }
-    });
-  }
-}, 500);
 
 /* ===============================
    SCROLL FADE-IN SECTIONS
@@ -319,7 +197,6 @@ const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
 const projects = [
   { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
   { id: 'eidon', name: 'Eidon' },
-  { id: 'flag-tester', name: 'Flag Tester' },
   { id: 'solar-requiem', name: 'Solar Requiem' },
   { id: 'web-design', name: 'Web Design' },
   { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' }
@@ -427,17 +304,102 @@ window.addEventListener('popstate', () => {
 })();
 
 /* ===============================
-   SOLAR REQUIEM THUMBNAILS
+   SHOP CUSTOM SCROLLBARS
 ================================ */
-const solarMainImage = document.getElementById('solarMainImage');
-const solarThumbnails = document.querySelectorAll('.solar-thumbnail');
+document.querySelectorAll('.shop-category').forEach(category => {
+  const scrollContainer = category.querySelector('.shop-items-scroll');
+  const scrollbar = category.querySelector('.shop-scrollbar');
+  if (!scrollContainer || !scrollbar) return;
 
-solarThumbnails.forEach(thumbnail => {
-  thumbnail.addEventListener('click', () => {
-    solarThumbnails.forEach(t => t.classList.remove('active'));
-    thumbnail.classList.add('active');
-    solarMainImage.src = thumbnail.dataset.main;
+  const track = scrollbar.querySelector('.shop-scrollbar__track');
+  const thumb = scrollbar.querySelector('.shop-scrollbar__thumb');
+
+  function getScrollRatio() {
+    const max = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    return max > 0 ? scrollContainer.scrollLeft / max : 0;
+  }
+
+  function updateThumb() {
+    const max = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    if (max <= 0) {
+      scrollbar.classList.add('hidden');
+      return;
+    }
+    scrollbar.classList.remove('hidden');
+    const pct = getScrollRatio() * 100;
+    thumb.style.left = pct + '%';
+  }
+
+  scrollContainer.addEventListener('scroll', () => {
+    if (!isDragging) updateThumb();
   });
+
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  thumb.addEventListener('mousedown', e => {
+    e.preventDefault();
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragStartScroll = scrollContainer.scrollLeft;
+    thumb.style.transition = 'none';
+    document.body.style.userSelect = 'none';
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const trackWidth = track.getBoundingClientRect().width;
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    const dx = e.clientX - dragStartX;
+    const scrollDelta = (dx / trackWidth) * maxScroll;
+    scrollContainer.scrollLeft = dragStartScroll + scrollDelta;
+    const pct = (scrollContainer.scrollLeft / maxScroll) * 100;
+    thumb.style.left = pct + '%';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    thumb.style.transition = '';
+    document.body.style.userSelect = '';
+  });
+
+  thumb.addEventListener('touchstart', e => {
+    isDragging = true;
+    dragStartX = e.touches[0].clientX;
+    dragStartScroll = scrollContainer.scrollLeft;
+    thumb.style.transition = 'none';
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const trackWidth = track.getBoundingClientRect().width;
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    const dx = e.touches[0].clientX - dragStartX;
+    const scrollDelta = (dx / trackWidth) * maxScroll;
+    scrollContainer.scrollLeft = dragStartScroll + scrollDelta;
+    const pct = (scrollContainer.scrollLeft / maxScroll) * 100;
+    thumb.style.left = pct + '%';
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    thumb.style.transition = '';
+  });
+
+  track.addEventListener('click', e => {
+    if (e.target === thumb) return;
+    const rect = track.getBoundingClientRect();
+    const clickPct = (e.clientX - rect.left) / rect.width;
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    scrollContainer.scrollLeft = clickPct * maxScroll;
+    updateThumb();
+  });
+
+  updateThumb();
+  window.addEventListener('resize', updateThumb);
 });
 
 /* ===============================
@@ -493,10 +455,8 @@ function setSpriteFrame(col, row) {
 }
 
 const sectionConfig = [
-  { el: document.querySelector('.hero-collage'), id: 'hero', message: "Welcome! Have a look around." },
-  { el: document.getElementById('gallery'), id: 'gallery', message: "Check out their work! Wow!" },
-  { el: document.getElementById('solar-requiem'), id: 'solar-requiem', message: "Hey, look! I'm in this game! Looks fun, right?" },
   { el: document.getElementById('shop'), id: 'shop', message: "Ooh, the shop!" },
+  { el: document.getElementById('gallery'), id: 'gallery', message: "Check out their work! Wow!" },
   { el: document.getElementById('about'), id: 'about', message: "Meet my creator!" },
 ];
 
