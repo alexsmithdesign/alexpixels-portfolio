@@ -137,6 +137,9 @@ charButtons.forEach(btn => {
    GALLERY
 ================================ */
 const galleryImages = [
+  { src: '/assets/solar-requiem/sr-main-menu.jpg', alt: 'Main Menu', category: 'ui' },
+  { src: '/assets/solar-requiem/SR-Menu-Energy-Grid.jpg', alt: 'Energy Grid', category: 'ui' },
+  { src: '/assets/solar-requiem/sr-equipment.jpg', alt: 'Equipment', category: 'ui' },
   { src: '/assets/SR-Airship.png', alt: 'Airship', category: 'environments' },
   { src: '/assets/SR-SunInterior.png', alt: 'Sun Interior', category: 'environments' },
   { src: '/assets/SR-DomeHome2.png', alt: 'Dome Home', category: 'environments' },

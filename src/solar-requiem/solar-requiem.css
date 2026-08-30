@@ -316,7 +316,6 @@ img {
   font-weight: 400;
   font-size: 30px;
   color: var(--sr-text-muted);
-  text-align: left;
   margin-bottom: 24px;
   line-height: 1.2;
 }
@@ -1042,6 +1041,14 @@ img {
    ============================================ */
 .sr-battle {
   text-align: center;
+}
+
+.sr-battle-video {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 32px auto;
+  border-radius: 4px;
 }
 
 .sr-battle-body {
