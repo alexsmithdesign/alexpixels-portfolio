@@ -154,13 +154,10 @@ window.addEventListener('resize', () => {
 ================================ */
 const artGalleryToggle = document.querySelector('.art-gallery-toggle');
 const artGalleryCollapsible = document.querySelector('.art-gallery-collapsible');
-const artGalleryArrow = document.querySelector('.art-gallery-arrow');
-
 if (artGalleryToggle && artGalleryCollapsible) {
   function toggleArtGallery() {
     const isOpen = artGalleryCollapsible.classList.toggle('open');
     artGalleryToggle.setAttribute('aria-expanded', isOpen);
-    if (artGalleryArrow) artGalleryArrow.classList.toggle('open', isOpen);
     if (isOpen) {
       galleryInstances.forEach(g => g.resize());
     }
@@ -172,7 +169,6 @@ if (artGalleryToggle && artGalleryCollapsible) {
       toggleArtGallery();
     }
   });
-  if (artGalleryArrow) artGalleryArrow.addEventListener('click', toggleArtGallery);
 }
 
 /* ===============================
@@ -481,8 +477,8 @@ function setSpriteFrame(col, row) {
 }
 
 const sectionConfig = [
-  { el: document.getElementById('shop'), id: 'shop', message: "Ooh, the shop!" },
-  { el: document.getElementById('gallery'), id: 'gallery', message: "Check out their work! Wow!" },
+  { el: document.getElementById('shop'), id: 'shop', message: "Alex sells assets online for developers. Pretty neat, huh?" },
+  { el: document.getElementById('gallery'), id: 'gallery', message: "Welcome to the portfolio of Alex Smith! Please check out their work!" },
   { el: document.getElementById('about'), id: 'about', message: "Meet my creator!" },
 ];
 

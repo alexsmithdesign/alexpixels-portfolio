@@ -75,6 +75,70 @@ body {
   color: #35030c;
 }
 
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  will-change: transform;
+}
+
+.bg-blob-1 {
+  width: 600px;
+  height: 600px;
+  background: #005199;
+  top: -10%;
+  left: -5%;
+  animation: blob1 20s ease-in-out infinite alternate;
+}
+
+.bg-blob-2 {
+  width: 500px;
+  height: 500px;
+  background: #005199;
+  bottom: -10%;
+  right: -5%;
+  animation: blob2 25s ease-in-out infinite alternate;
+}
+
+.bg-blob-3 {
+  width: 450px;
+  height: 450px;
+  background: #003564;
+  top: 40%;
+  left: 50%;
+  animation: blob3 22s ease-in-out infinite alternate;
+}
+
+@keyframes blob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30vw, 20vh) scale(1.1); }
+  66% { transform: translate(10vw, 50vh) scale(0.9); }
+  100% { transform: translate(25vw, 70vh) scale(1.05); }
+}
+
+@keyframes blob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25vw, -30vh) scale(1.15); }
+  66% { transform: translate(-40vw, -10vh) scale(0.85); }
+  100% { transform: translate(-15vw, -50vh) scale(1.1); }
+}
+
+@keyframes blob3 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-20vw, -25vh) scale(1.2); }
+  66% { transform: translate(15vw, 20vh) scale(0.9); }
+  100% { transform: translate(-10vw, 30vh) scale(1.05); }
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -627,7 +691,7 @@ a.social-icon {
 /* ===== Gallery Section ===== */
 .hero-gallery-section {
   padding: 0;
-  margin: 60px 0 240px 0;
+  margin: 120px 0 240px 0;
   flex-shrink: 0;
 }
 
@@ -644,7 +708,7 @@ a.social-icon {
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: #2e8585;
+  color: #ffffff;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -661,6 +725,15 @@ a.social-icon {
 
 .art-gallery-toggle {
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  transition: text-decoration-color 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+.art-gallery-toggle:hover {
+  text-decoration-color: #0ECACA;
+  text-shadow: 0px 0px 20px rgba(14, 202, 202, 0.6);
 }
 
 .art-gallery-collapsible {
@@ -671,31 +744,6 @@ a.social-icon {
   display: block;
 }
 
-.art-gallery-arrow {
-  display: flex;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 12px auto 0;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 0.88;
-  transform: rotate(-90deg);
-}
-
-.art-gallery-arrow:hover {
-  opacity: 1;
-  transform: rotate(-90deg) scale(1.2);
-}
-
-.art-gallery-arrow.open {
-  transform: rotate(90deg);
-}
-
-.art-gallery-arrow.open:hover {
-  transform: rotate(90deg) scale(1.2);
-}
 
 .gallery-container-wrapper {
   position: relative;
@@ -2160,6 +2208,12 @@ a.social-icon {
 
   .sprite-bubble {
     bottom: calc(100% + 8px);
+    white-space: normal;
+    right: auto;
+    left: auto;
+    width: calc(100vw - 32px);
+    right: -16px;
+    font-size: 14px;
   }
 
   .sprite-bubble-arrow {
