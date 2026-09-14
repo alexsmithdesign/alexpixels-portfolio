@@ -618,12 +618,16 @@ a.social-icon {
 .header-social-icons {
   margin: 0;
   flex-shrink: 0;
+  padding-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ===== Gallery Section ===== */
 .hero-gallery-section {
   padding: 0;
-  margin: 100px 0 240px 0;
+  margin: 60px 0 240px 0;
   flex-shrink: 0;
 }
 
@@ -653,6 +657,44 @@ a.social-icon {
   flex: 1;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
+}
+
+.art-gallery-toggle {
+  cursor: pointer;
+}
+
+.art-gallery-collapsible {
+  display: none;
+}
+
+.art-gallery-collapsible.open {
+  display: block;
+}
+
+.art-gallery-arrow {
+  display: flex;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 12px auto 0;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.88;
+  transform: rotate(-90deg);
+}
+
+.art-gallery-arrow:hover {
+  opacity: 1;
+  transform: rotate(-90deg) scale(1.2);
+}
+
+.art-gallery-arrow.open {
+  transform: rotate(90deg);
+}
+
+.art-gallery-arrow.open:hover {
+  transform: rotate(90deg) scale(1.2);
 }
 
 .gallery-container-wrapper {
@@ -1918,6 +1960,7 @@ a.social-icon {
 
   nav {
     gap: 10px;
+    margin-top: 16px;
   }
 
   .nav-item {
@@ -1958,8 +2001,14 @@ a.social-icon {
     gap: 0;
   }
 
+  .header-social-icons {
+    padding-top: 100px;
+  }
+
   .hero-gallery-section {
-    padding: 0 20px;
+    padding: 0 16px;
+    margin-top: 40px;
+    margin-bottom: 160px;
   }
 
   .gallery-image-wrapper {
@@ -2220,7 +2269,7 @@ a.social-icon {
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-top: none;
+  margin-top: 0;
 }
 
 .case-study-back,
@@ -2388,6 +2437,29 @@ a.social-icon {
 
   .case-study-project-name {
     font-size: 12px;
+  }
+
+  .case-study-nav {
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .case-study-back,
+  .case-study-next {
+    height: auto;
+    flex: 1;
+    padding: 10px 16px;
+    margin: 0;
+  }
+
+  .case-study-project-name {
+    width: 100%;
+    text-align: center;
+    padding: 8px 16px;
+    order: -1;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 }
 

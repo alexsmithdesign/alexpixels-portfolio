@@ -150,6 +150,32 @@ window.addEventListener('resize', () => {
 });
 
 /* ===============================
+   ART GALLERY ACCORDION
+================================ */
+const artGalleryToggle = document.querySelector('.art-gallery-toggle');
+const artGalleryCollapsible = document.querySelector('.art-gallery-collapsible');
+const artGalleryArrow = document.querySelector('.art-gallery-arrow');
+
+if (artGalleryToggle && artGalleryCollapsible) {
+  function toggleArtGallery() {
+    const isOpen = artGalleryCollapsible.classList.toggle('open');
+    artGalleryToggle.setAttribute('aria-expanded', isOpen);
+    if (artGalleryArrow) artGalleryArrow.classList.toggle('open', isOpen);
+    if (isOpen) {
+      galleryInstances.forEach(g => g.resize());
+    }
+  }
+  artGalleryToggle.addEventListener('click', toggleArtGallery);
+  artGalleryToggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleArtGallery();
+    }
+  });
+  if (artGalleryArrow) artGalleryArrow.addEventListener('click', toggleArtGallery);
+}
+
+/* ===============================
    GALLERY LIGHTBOX
 ================================ */
 const lightbox = document.getElementById('gallery-lightbox');
@@ -195,11 +221,11 @@ const caseStudyBackBtn = caseStudyOverlay.querySelector('.case-study-back');
 const caseStudyNextBtn = caseStudyOverlay.querySelector('.case-study-next');
 
 const projects = [
-  { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
   { id: 'eidon', name: 'Eidon' },
+  { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' },
+  { id: 'crossmen-rebrand', name: 'Crossmen Rebrand' },
   { id: 'solar-requiem', name: 'Solar Requiem' },
-  { id: 'web-design', name: 'Web Design' },
-  { id: 'sumo-visa-pushnami', name: 'Sumo, Visa, Pushnami' }
+  { id: 'web-design', name: 'Visual Design' }
 ];
 
 let currentProjectIndex = 0;
