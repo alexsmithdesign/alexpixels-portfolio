@@ -62,14 +62,7 @@
         <div class="linkedin-image"></div>
       </a>
     </div>
-    <div class="social-icons-row">
-      <a class="social-icon" href="https://www.instagram.com/alexanderpixels/" target="_blank" rel="noopener noreferrer" aria-label="Alex Pixels on Instagram">
-        <div class="insta-image"></div>
-      </a>
-      <a class="social-icon" href="https://alexdraws.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Alex Pixels on itch.io">
-        <div class="itch-image"></div>
-      </a>
-    </div>
+    <img src="/assets/hud-header.svg" alt="" class="social-icons-hud">
   </div>
 
   <!-- Gallery Section -->
@@ -109,16 +102,12 @@
         <div class="gallery-scroll-container">
           <div class="gallery-images">
             <div class="gallery-image-wrapper">
-              <img src="/assets/eidon.png" alt="Eidon">
-              <div class="gallery-image-title"><span class="gallery-title-text">EIDON</span><div class="gallery-title-rect"></div></div>
+              <img src="/assets/crossmen-casestudy.jpg" alt="Crossmen Brand Overview">
+              <div class="gallery-image-title"><span class="gallery-title-text">CROSSMEN BRAND</span><div class="gallery-title-rect"></div></div>
             </div>
             <div class="gallery-image-wrapper">
-              <img src="/assets/eidon-pwa-screens.webp" alt="Eidon PWA Screens">
-              <div class="gallery-image-title"><span class="gallery-title-text">EIDON APP</span><div class="gallery-title-rect"></div></div>
-            </div>
-            <div class="gallery-image-wrapper">
-              <img src="/assets/eidon-guidelines-1.png" alt="Eidon Brand Guidelines">
-              <div class="gallery-image-title"><span class="gallery-title-text">EIDON GUIDELINES</span><div class="gallery-title-rect"></div></div>
+              <img src="/assets/xmenlogo-examples.png" alt="Crossmen Logo Variations">
+              <div class="gallery-image-title"><span class="gallery-title-text">CROSSMEN LOGOS</span><div class="gallery-title-rect"></div></div>
             </div>
             <div class="gallery-image-wrapper">
               <img src="/assets/eidon-website.png" alt="Eidon Website">
@@ -395,39 +384,25 @@
     <h2 class="section-title">ABOUT</h2>
 
     <div class="about-container fade-in-section">
-      <!-- Left Side: Diamond Badge -->
-      <div class="about-left">
-        <div class="about-diamond-container">
-          <img src="/assets/about-diamond.svg" alt="Alex Character Class" class="about-diamond">
+      <div class="spaceid-wrapper">
+        <div class="spaceid-card" id="spaceid-card">
+          <div class="spaceid-face">
+            <img src="/assets/spaceid.png" alt="Alex Smith - Designer ID Card">
+          </div>
+          <div class="spaceid-glare" id="spaceid-glare"></div>
         </div>
-
-        <div class="about-name-container">
-          <img src="/assets/about-ornament.svg" alt="" class="about-ornament about-ornament-left">
-          <h3 class="about-name">ALEX</h3>
-          <img src="/assets/about-ornament.svg" alt="" class="about-ornament about-ornament-right">
-        </div>
-
-        <div class="about-name-subtitle">DESIGNER</div>
       </div>
 
-      <!-- Right Side: Skills & Bio -->
-      <div class="about-right">
-        <div class="about-skills-container">
-          <img src="/assets/about-skills.svg" alt="" class="skill-hex">
-          <img src="/assets/about-connector.svg" alt="" class="about-connector">
-        </div>
-
-        <div class="about-bio">
-          <p class="about-bio-text">
-            Alex has been drawing since he was small child and hasn't stopped since then. Today, his creative skillset ranges from traditional graphic design, illustration, pixel art, development, and much more.
-          </p>
-          <p class="about-bio-text">
-            Alex has worked for companies like Sumo, Visa, Pushnami, creating design systems, applications, websites, branding, merch, and pretty much anything that requires a designer's touch.
-          </p>
-          <p class="about-bio-text">
-            Alex sells assets online, is expanding into physical products, and is working on multiple personal projects. He never stops creating, and he dreams constantly of building worlds and designs that delight and excite.
-          </p>
-        </div>
+      <div class="about-bio">
+        <p class="about-bio-text">
+          Alex has been drawing since he was small child and hasn't stopped since then. Today, his creative skillset ranges from traditional graphic design, illustration, pixel art, development, and much more.
+        </p>
+        <p class="about-bio-text">
+          Alex has worked for companies like Sumo, Visa, Pushnami, creating design systems, applications, websites, branding, merch, and pretty much anything that requires a designer's touch.
+        </p>
+        <p class="about-bio-text">
+          Alex sells assets online, is expanding into physical products, and is working on multiple personal projects. He never stops creating, and he dreams constantly of building worlds and designs that delight and excite.
+        </p>
       </div>
     </div>
   </section>
@@ -450,14 +425,6 @@
           </div>
           <a class="social-icon" href="https://www.linkedin.com/in/alexsmithdesign/" target="_blank" rel="noopener noreferrer" aria-label="Alex Pixels on LinkedIn">
             <div class="linkedin-image"></div>
-          </a>
-        </div>
-        <div class="social-icons-row">
-          <a class="social-icon" href="https://www.instagram.com/alexanderpixels/" target="_blank" rel="noopener noreferrer" aria-label="Alex Pixels on Instagram">
-            <div class="insta-image"></div>
-          </a>
-          <a class="social-icon" href="https://alexdraws.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Alex Pixels on itch.io">
-            <div class="itch-image"></div>
           </a>
         </div>
       </div>
@@ -487,6 +454,7 @@
   </div>
 
   <div id="gallery-lightbox" class="gallery-lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
     <img id="gallery-lightbox-img" src="" alt="">
   </div>
 

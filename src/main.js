@@ -183,7 +183,7 @@ function openLightbox(src) {
 }
 
 function closeLightbox() {
-  lightbox.classList.remove('visible');
+  lightbox.classList.remove('visible', 'zoomed');
   lightbox.addEventListener('transitionend', () => {
     lightboxImg.src = '';
   }, { once: true });
@@ -194,7 +194,19 @@ document.querySelectorAll('.gallery-image-wrapper:not([data-case-study]) img').f
   img.addEventListener('click', () => openLightbox(img.src));
 });
 
-lightbox.addEventListener('click', closeLightbox);
+lightboxImg.addEventListener('click', (e) => {
+  e.stopPropagation();
+  lightbox.classList.toggle('zoomed');
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.getElementById('lightbox-close').addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeLightbox();
+});
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -364,8 +376,18 @@ const sectionConfig = [
 let entryComplete = false;
 let currentSectionId = null;
 let walkTimer = null;
+let bubbleDismissed = false;
+
+spriteCompanion.addEventListener('click', () => {
+  if (spriteBubble.classList.contains('visible')) {
+    hideBubble();
+    bubbleDismissed = true;
+    setTimeout(() => { bubbleDismissed = false; }, 2000);
+  }
+});
 
 function showBubble(text) {
+  if (bubbleDismissed) return;
   spriteBubbleText.textContent = text;
   spriteBubble.classList.add('visible');
 }
@@ -471,6 +493,60 @@ function startEntry() {
 }
 
 setTimeout(startEntry, 800);
+
+/* ===============================
+   3D SPACE ID CARD
+================================ */
+const spaceidCard = document.getElementById('spaceid-card');
+const spaceidGlare = document.getElementById('spaceid-glare');
+
+if (spaceidCard) {
+  const MAX_TILT = 15;
+
+  function applyTilt(xPct, yPct) {
+    const rotateY = (xPct - 0.5) * MAX_TILT * 2;
+    const rotateX = (0.5 - yPct) * MAX_TILT * 2;
+    spaceidCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    spaceidGlare.style.background = `radial-gradient(circle at ${xPct * 100}% ${yPct * 100}%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 30%, transparent 60%)`;
+  }
+
+  function resetTilt() {
+    spaceidCard.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    spaceidCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    spaceidGlare.style.opacity = '0';
+    spaceidCard.classList.remove('active');
+  }
+
+  spaceidCard.addEventListener('mouseenter', () => {
+    spaceidCard.style.transition = 'transform 0.15s ease-out';
+    spaceidGlare.style.opacity = '1';
+  });
+
+  spaceidCard.addEventListener('mousemove', (e) => {
+    const rect = spaceidCard.getBoundingClientRect();
+    const xPct = (e.clientX - rect.left) / rect.width;
+    const yPct = (e.clientY - rect.top) / rect.height;
+    applyTilt(xPct, yPct);
+  });
+
+  spaceidCard.addEventListener('mouseleave', resetTilt);
+
+  spaceidCard.addEventListener('touchstart', (e) => {
+    spaceidCard.style.transition = 'transform 0.15s ease-out';
+    spaceidGlare.style.opacity = '1';
+    spaceidCard.classList.add('active');
+  }, { passive: true });
+
+  spaceidCard.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const rect = spaceidCard.getBoundingClientRect();
+    const xPct = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    const yPct = Math.max(0, Math.min(1, (touch.clientY - rect.top) / rect.height));
+    applyTilt(xPct, yPct);
+  }, { passive: true });
+
+  spaceidCard.addEventListener('touchend', resetTilt);
+}
 
 /* ===============================
    EMAIL SUBSCRIBE FORM
