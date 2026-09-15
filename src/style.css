@@ -47,7 +47,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #0f0f10;
+  background-color: #374958;
 }
 
 ::selection {
@@ -87,14 +87,14 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.4;
+  opacity: 1;
   will-change: transform;
 }
 
 .bg-blob-1 {
   width: 600px;
   height: 600px;
-  background: #005199;
+  background: #5D849A;
   top: -10%;
   left: -5%;
   animation: blob1 20s ease-in-out infinite alternate;
@@ -103,7 +103,7 @@ body {
 .bg-blob-2 {
   width: 500px;
   height: 500px;
-  background: #005199;
+  background: #5D849A;
   bottom: -10%;
   right: -5%;
   animation: blob2 25s ease-in-out infinite alternate;
@@ -112,7 +112,7 @@ body {
 .bg-blob-3 {
   width: 450px;
   height: 450px;
-  background: #003564;
+  background: #5D849A;
   top: 40%;
   left: 50%;
   animation: blob3 22s ease-in-out infinite alternate;
@@ -682,7 +682,7 @@ a.social-icon {
 .header-social-icons {
   margin: 0;
   flex-shrink: 0;
-  padding-top: 160px;
+  padding-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -691,7 +691,7 @@ a.social-icon {
 /* ===== Gallery Section ===== */
 .hero-gallery-section {
   padding: 0;
-  margin: 120px 0 240px 0;
+  margin: 120px 0 120px 0;
   flex-shrink: 0;
 }
 
@@ -723,6 +723,89 @@ a.social-icon {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ===== Featured Projects Grid ===== */
+.featured-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+}
+
+.featured-project {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.featured-project:nth-child(2).fade-in-section {
+  transition-delay: 0.25s;
+}
+
+.featured-project-image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.featured-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.featured-project-info {
+  padding-top: 20px;
+  padding-left: 30px;
+  border-left: 1px solid #ffffff42;
+}
+
+.featured-project-tag {
+  font-family: 'Merquise', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0ECACA;
+  margin-bottom: 16px;
+}
+
+.featured-project-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 480px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+}
+
+.featured-project-btn {
+  display: inline-block;
+  text-decoration: none;
+  filter: drop-shadow(0px 0px 60px rgba(14, 196, 202, 0.8)) drop-shadow(0px 0px 20px rgba(14, 196, 202, 0.5));
+}
+
+.featured-project-btn span {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #000;
+  background: linear-gradient(to right, #0ECACA 0%, #0ECACA 50%, #85d1d1 50%, #fff 100%);
+  background-size: 200% 100%;
+  background-position: right;
+  white-space: nowrap;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  transition: background-position 0.4s ease;
+}
+
+.featured-project-btn:hover span {
+  background-position: left;
+}
+
 .art-gallery-toggle {
   cursor: pointer;
   text-decoration: underline;
@@ -747,8 +830,8 @@ a.social-icon {
 
 .gallery-container-wrapper {
   position: relative;
-  border-top: 1px solid #3c3c3c;
-  border-bottom: 1px solid #3c3c3c;
+  border-top: 1px solid #7196a2;
+  border-bottom: 1px solid #7196a2;
 }
 
 .gallery-scroll-container {
@@ -1364,7 +1447,7 @@ a.social-icon {
 /* Shop Section */
 .shop-section {
   position: relative;
-  padding: 200px 40px 60px 40px;
+  padding: 160px 40px 60px 40px;
 }
 
 .shop-section .section-title {
@@ -2050,7 +2133,14 @@ a.social-icon {
   }
 
   .header-social-icons {
-    padding-top: 100px;
+    padding-top: 160px;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .featured-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .hero-gallery-section {
@@ -2130,6 +2220,12 @@ a.social-icon {
   
   .about-ornament {
     width: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-social-icons {
+    padding-top: 280px;
   }
 }
 
