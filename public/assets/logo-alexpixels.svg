@@ -1,8 +1,8 @@
-<svg width="118" height="118" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg shape-rendering="geometricPrecision" width="118" height="118" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect x="59" y="21.9189" width="52.4405" height="52.4405" transform="rotate(45 59 21.9189)" fill="url(#paint0_radial_2524_2507)" stroke="#0ECACA" stroke-width="0.757283"/>
 <rect x="59" y="34.5356" width="34.598" height="34.598" transform="rotate(45 59 34.5356)" stroke="#0ECACA" stroke-width="0.757283"/>
 <g filter="url(#filter0_d_2524_2507)">
-<rect x="59" y="19.071" width="56.4682" height="56.4682" transform="rotate(45 59 19.071)" stroke="#0ECACA" stroke-width="1.51457" shape-rendering="crispEdges"/>
+<rect x="59" y="19.071" width="56.4682" height="56.4682" transform="rotate(45 59 19.071)" stroke="#0ECACA" stroke-width="1.51457" shape-rendering="geometricPrecision"/>
 </g>
 <path d="M92.7568 92.7609L91.9961 92.757L66.1162 92.6378L66.1191 91.881L66.123 91.1232L91.2432 91.2394V66.0001H92.7568V92.7609Z" fill="#0ECACA"/>
 <path d="M25.0566 25.0609L25.0605 25.8217L25.1797 51.7015L25.9365 51.6986L26.6943 51.6947L26.5781 26.5746L51.8174 26.5746V25.0609L25.0566 25.0609Z" fill="#0ECACA"/>

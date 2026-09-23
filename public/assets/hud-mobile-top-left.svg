@@ -1,4 +1,4 @@
-<svg width="171" height="98" viewBox="0 0 171 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg shape-rendering="geometricPrecision" width="171" height="98" viewBox="0 0 171 98" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 92.5H79.0589C85.4241 92.5 91.5286 89.9714 96.0294 85.4706L128.971 52.5294C133.471 48.0286 136 41.9241 136 35.5589V25.1274C136 20.884 137.686 16.8143 140.686 13.8137L148.314 6.18629C151.314 3.18571 155.384 1.5 159.627 1.5H170.5" stroke="#0ECACA" stroke-width="0.5"/>
 <path d="M159.627 1.5H170.5" stroke="#0ECACA" stroke-width="3"/>
 <path d="M140 39.5L140 36.5" stroke="#0ECACA" stroke-width="3"/>
