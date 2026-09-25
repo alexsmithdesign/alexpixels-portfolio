@@ -47,7 +47,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #374958;
+  background-color: #1D2A31;
 }
 
 ::selection {
@@ -94,7 +94,7 @@ body {
 .bg-blob-1 {
   width: 900px;
   height: 900px;
-  background: #5D849A;
+  background: #000000;
   top: -10%;
   left: -5%;
   animation: blob1 20s ease-in-out infinite alternate;
@@ -112,7 +112,7 @@ body {
 .bg-blob-3 {
   width: 700px;
   height: 700px;
-  background: #5D849A;
+  background: #1d2f3a;
   top: 40%;
   left: 50%;
   animation: blob3 22s ease-in-out infinite alternate;
@@ -1015,6 +1015,41 @@ a.social-icon {
 
 .lightbox-close:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.lightbox-arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
+.lightbox-arrow img {
+  width: 48px;
+  height: auto;
+}
+
+.lightbox-arrow-left {
+  left: 16px;
+}
+
+.lightbox-arrow-right {
+  right: 16px;
+}
+
+.lightbox-arrow[hidden] {
+  display: none !important;
 }
 
 .gallery-dots {
